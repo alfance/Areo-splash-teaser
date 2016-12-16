@@ -2,531 +2,754 @@
 
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <title>Spin VR Homepage</title>
-        <link rel="shortcut icon" type="image/x-icon" id="favicon" href="css/images/browser_icon.ico">
-        <meta name="description" content="Portal for all SpinVR projects.">
-        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale:1.0">
+  <head>
+    <title>Spin VR Homepage</title>
+    <link rel="shortcut icon" type="image/x-icon" id="favicon" href="css/images/browser_icon.ico">
+    <meta name="description" content="Portal for all SpinVR projects.">
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale:1.0">
 
-        <style>
-            body {
-                margin: 0px;
-                overflow: hidden;
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                cursor: default;
-            }
+    <style>
+      body {
+        margin: 0px;
+        overflow: hidden;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: default;
+      }
 
-            #container {
-                display: block;
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 10;
-            }
+      #main {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
 
-            #toolbar {
-                position: absolute;
-                width: 100%;
-                height: 40px;
-                top: 0;
-            }
-        </style>
+      #containerBackground {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 100%;
+      }
 
-    </head>
+      #middleWrapper {
+        position: absolute;
+        top: 20%;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-family: openSansSemiBold;
+      }
 
-    <body>
-        <link rel="stylesheet" href="js/libs/kingui/kingui.css" />
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+      #middleHeaderOne {
+        font-size: 1.5vw;
+        color: white;
+        letter-spacing: 0.7vw;
+        margin-bottom: 1.9vh;
+      }
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-        <script src="js/libs/mediaelement/mediaelement-and-player.min.js"></script>
-        <link rel="stylesheet" href="js/libs/mediaelement/mediaelementplayer.css" />
+      #underline {
+        position: relative;
+        background-color: #f6c472;
+        width: 20%;
+        height: 0.5vh;
+        left: 40%;
+      }
 
-        <div id="container">
+      #svgTest {
+        position: relative;
+        width: 20%;
+        margin-top: 2%;
+        margin-bottom: 2.5%;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+      }
+
+      #colorPickWrapper {
+        position: relative;
+        width: 28%;
+        height: 8vh;
+        left: 36%;
+        border-radius: 50px;
+        border: 2px solid #78867f;
+      }
+
+      #colorPickerText {
+        position: relative;
+        font-size: 1vw;
+        top: 15%;
+      }
+
+      #colorPickerColors {
+        position: absolute;
+        width: 50%;
+        height: 2vh;
+        bottom: 20%;
+        left: 25%;
+        cursor: pointer;
+      }
+
+      #colorPickerColors span {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        position: relative;
+        display: inline;
+        width: 20%;
+        height: 100%;
+        float: left;
+      }
+
+      #colorPickerColors span:hover {
+        border: 1px solid white;
+      }
+
+      #colorPickerColorsRed {
+        background-color: #ff6138;
+      }
+
+      #colorPickerColorsYellow {
+        background-color: #ffff9d;
+      }
+
+      #colorPickerColorsLime {
+        background-color: #beeb9f;
+      }
+
+      #colorPickerColorsGreen {
+        background-color: #00a388;
+      }
+
+      #colorPickerColorsPink {
+        background-color: #ff8598;
+      }
+
+      @font-face {
+        font-family: openSans;
+        src: url('css/fonts/open_sans/OpenSans-Regular.ttf');
+      }
+
+      @font-face {
+        font-family: openSansBold;
+        src: url('css/fonts/open_sans/OpenSans-Bold.ttf');
+      }
+
+      @font-face {
+        font-family: openSansSemiBold;
+        src: url('css/fonts/open_sans/OpenSans-Semibold.ttf');
+      }
+
+      @font-face {
+        font-family: latoHeavy;
+        src: url('css/fonts/lato/Lato-Heavy.ttf');
+      }
+
+      @font-face {
+        font-family: latoBold;
+        src: url('css/fonts/lato/Lato-Bold.ttf');
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <link rel="stylesheet" href="js/libs/kingui/kingui.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+    <div id="container">
+      <div id="containerBackground"></div>
+      <div id="middleWrapper">
+        <div id="middleHeaderOne">MADE WITH</div>
+        <div id="underline"></div>
+        <img id="svgTest" src="css/images/Areo.svg">
+        <div id="colorPickWrapper">
+          <div id="colorPickerText">Choose a Colour</div>
+          <div id="colorPickerColors">
+            <span id="colorPickerColorsRed"></span>
+            <span id="colorPickerColorsYellow"></span>
+            <span id="colorPickerColorsLime"></span>
+            <span id="colorPickerColorsGreen"></span>
+            <span id="colorPickerColorsPink"></span>
+          </div>
         </div>
-        <video width="640" height="360" id="player1" preload="none" autoplay="true">
-            <source type="video/youtube" src="https://www.youtube.com/embed/i2nuHEGhwiw" />
-        </video>
-
-        <script src="js/libs/tween.js/Tween.js"></script>
-        <script src="js/libs/three.js/three.js"></script>
-        <script src="js/libs/kingui/kingui.js"></script>
-
-        <script src="js/libs/three.js/controls/OrbitControls.js"></script>
-        <script src="js/libs/three.js/controls/VRControls.js"></script>
-
-        <script src="js/libs/three.js/effects/VREffect.js"></script>
-
-        <script src="js/libs/three.js/loaders/OBJLoader.js"></script>
-        <script src="js/libs/three.js/loaders/MTLLoader.js"></script>
-
-        <script src="js/libs/three.js/renderers/CSS3DRenderer.js"></script>
-
-        <script src="js/libs/three.js/Mirror.js"></script>
-        <script src="js/libs/three.js/WaterShader.js"></script>
-
-        <!-- NodeLibrary -->
-        <script src="js/libs/three.js/nodes/GLNode.js"></script>
-        <script src="js/libs/three.js/nodes/RawNode.js"></script>
-        <script src="js/libs/three.js/nodes/TempNode.js"></script>
-        <script src="js/libs/three.js/nodes/InputNode.js"></script>
-        <script src="js/libs/three.js/nodes/ConstNode.js"></script>
-        <script src="js/libs/three.js/nodes/FunctionNode.js"></script>
-        <script src="js/libs/three.js/nodes/FunctionCallNode.js"></script>
-        <script src="js/libs/three.js/nodes/AttributeNode.js"></script>
-        <script src="js/libs/three.js/nodes/NodeBuilder.js"></script>
-        <script src="js/libs/three.js/nodes/NodeLib.js"></script>
-        <script src="js/libs/three.js/nodes/NodeMaterial.js"></script>
-
-        <!-- Accessors -->
-        <script src="js/libs/three.js/nodes/accessors/PositionNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/NormalNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/UVNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/ScreenUVNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/ColorsNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/CameraNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/ReflectNode.js"></script>
-        <script src="js/libs/three.js/nodes/accessors/LightNode.js"></script>
+      </div>
+    </div>
 
-        <!-- Inputs -->
-        <script src="js/libs/three.js/nodes/inputs/IntNode.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/FloatNode.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/ColorNode.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/Vector2Node.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/Vector3Node.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/Vector4Node.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/TextureBaseNode.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/TextureNode.js"></script>
-        <script src="js/libs/three.js/nodes/inputs/CubeTextureNode.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="js/libs/tween.js/Tween.js"></script>
+    <script src="js/libs/three.js/three.js"></script>
+    <script src="js/libs/kingui/kingui.js"></script>
 
-        <!-- Math -->
-        <script src="js/libs/three.js/nodes/math/Math1Node.js"></script>
-        <script src="js/libs/three.js/nodes/math/Math2Node.js"></script>
-        <script src="js/libs/three.js/nodes/math/Math3Node.js"></script>
-        <script src="js/libs/three.js/nodes/math/OperatorNode.js"></script>
+    <script src="js/libs/three.js/controls/OrbitControls.js"></script>
+    <script src="js/libs/three.js/controls/VRControls.js"></script>
 
-        <!-- Utils -->
-        <script src="js/libs/three.js/nodes/utils/SwitchNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/JoinNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/TimerNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/RoughnessToBlinnExponentNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/VelocityNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/LuminanceNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/ColorAdjustmentNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/NoiseNode.js"></script>
-        <script src="js/libs/three.js/nodes/utils/ResolutionNode.js"></script>
+    <script src="js/libs/three.js/effects/VREffect.js"></script>
 
-        <!-- Phong Material -->
-        <script src="js/libs/three.js/nodes/materials/PhongNode.js"></script>
-        <script src="js/libs/three.js/nodes/materials/PhongNodeMaterial.js"></script>
+    <script src="js/libs/three.js/loaders/OBJLoader.js"></script>
+    <script src="js/libs/three.js/loaders/MTLLoader.js"></script>
 
-        <!-- Standard Material -->
-        <script src="js/libs/three.js/nodes/materials/StandardNode.js"></script>
-        <script src="js/libs/three.js/nodes/materials/StandardNodeMaterial.js"></script>
+    <script src="js/libs/three.js/Mirror.js"></script>
+    <script src="js/libs/three.js/WaterShader.js"></script>
 
-        <script>
+    <script>
 
-            var camera, controls, effect, scene, renderer, cssRenderer, cssScene;
+      var camera, controls, effect, scene, renderer;
 
-            var audioListener = new THREE.AudioListener();
-            var audioLoader = new THREE.AudioLoader();
+      var audioListener = new THREE.AudioListener();
+      var audioLoader = new THREE.AudioLoader();
 
-            var raycaster = new THREE.Raycaster();
-            var mouse = new THREE.Vector2();
-            var intersected;
+      var raycaster = new THREE.Raycaster();
+      var mouse = new THREE.Vector2();
+      var intersected;
+      var baseColor = new THREE.Color();
 
-            var meshes = [];
+      var ambientSound = new THREE.Audio(audioListener);
+      var chimeSound1 = new THREE.PositionalAudio(audioListener);
+      var chimes = [];
 
-            var water, waterNormals;
+      var meshes = [];
 
-            init();
-            animate();
+      var water, waterNormals;
 
-            function init() {
+      var cubeGroup = new THREE.Group();
+      var landingPoint = new THREE.Vector3(0, 0, 0);
+      var tweenPlaying = false;
+      var focusedCube = null;
+      var focusedCubeOriginalPosition = new THREE.Vector3();
 
-                scene = new THREE.Scene();
-                scene.background = new THREE.Color(0xE9FDEB);
-                scene.fog = new THREE.Fog(0x7C8D7A, 0.5, 60);
+      var sceneEnabled = false, uiEnabled = true;
 
-                cssScene = new THREE.Scene();
+      init();
+      animate();
 
-                renderer = new THREE.WebGLRenderer({antialias: true});
-                renderer.setClearColor(scene.fog.color);
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight);
+      function init() {
 
-                var container = document.getElementById('container');
-                container.appendChild(renderer.domElement);
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xE9FDEB);
+        scene.fog = new THREE.Fog(0x7C8D7A, 0.5, 60);
 
-                camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
-                camera.position.set(0, 3, 13.675);
+        renderer = new THREE.WebGLRenderer({antialias: true});
+        renderer.setClearColor(scene.fog.color);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
-                controls = new THREE.OrbitControls(camera, renderer.domElement);
+        var container = document.getElementById('container');
+        container.appendChild(renderer.domElement);
 
-                effect = new THREE.VREffect(renderer);
-                effect.autoSubmitFrame = false;
-                vrControls = new THREE.VRControls(camera);
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+        camera.position.set(0, 3, 13.675);
 
-                controls.enableDamping = true;
-                controls.dampingFactor = 0.05;
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-                controls.enableRotate = true;
-                controls.rotateSpeed = 0.1;
+        effect = new THREE.VREffect(renderer);
+        effect.autoSubmitFrame = false;
+        vrControls = new THREE.VRControls(camera);
 
-                controls.enableZoom = true;
-                controls.zoomSpeed = 0.5;
-                //         controls.minDistance = 7;
-                //         controls.maxDistance = 14;
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
 
-                controls.enablePan = false;
+        controls.enableRotate = true;
+        controls.rotateSpeed = 0.1;
 
-                controls.autoRotate = true;
-                controls.autoRotateSpeed = -0.01;
+        controls.enableZoom = false;
+        controls.zoomSpeed = 0.5;
+        controls.minDistance = 7;
+        controls.maxDistance = 14;
 
-                // environment
+        controls.enablePan = false;
 
-                var textureLoader = new THREE.TextureLoader();
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = -0.01;
 
-                var grass = textureLoader.load('assets/environment/grasslight-big.jpg', pillarTextureResolve);
-                var grassNormal = textureLoader.load('assets/environment/grasslight-big-nm.jpg', pillarTextureResolve);
+        // environment
 
-                var decal = textureLoader.load('assets/environment/decal-diffuse.png', function(texture) {
+        var mtlLoader = new THREE.MTLLoader();
+        mtlLoader.load('assets/environment/cubeSceneWithSpheres5.mtl', function(loadedMaterials) {
 
-                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                    texture.needsUpdate = true;
+          var objLoader = new THREE.OBJLoader();
+          objLoader.setMaterials(loadedMaterials);
 
-                });
+          objLoader.load('assets/environment/cubeSceneWithSpheres5.obj', function(object) {
 
-                var pillar = textureLoader.load('assets/environment/pillarMat_basecolor.jpg', pillarTextureResolve);
-                var pillarNormal = textureLoader.load('assets/environment/pillarMat_normal.jpg', pillarTextureResolve);
-                var pillarRoughness = textureLoader.load('assets/environment/pillarMat_roughness.jpg', pillarTextureResolve);
-                var pillarMetallic = textureLoader.load('assets/environment/pillarMat_metallic.jpg', pillarTextureResolve);
+            scene.add(object);
 
-                var brick = textureLoader.load('assets/environment/pillarMatBrick_basecolor.jpg', brickTextureResolve);
-                var brickNormal = textureLoader.load('assets/environment/pillarMatBrick_normal.jpg', brickTextureResolve);
-                var brickRoughness = textureLoader.load('assets/environment/pillarMatBrick_roughness.jpg', brickTextureResolve);
-                var brickMetallic = textureLoader.load('assets/environment/pillarMatBrick_metallic.jpg', brickTextureResolve);
+            // object.children[0] - object.children[7] are center spheres
+            // object.children[8] - object.children[9], &
+            // object.children[12] - object.children[18] are outer buildings
+            // object.children[10] is center walkway
+            // object.children[11] is center platform
+            // object.children[19] is outer platform
 
-                function pillarTextureResolve(texture) {
+            var buildingMaterial = new THREE.MeshPhysicalMaterial({
+              color: 0xFFFFFF,
+              roughness: 1.0,
+              metalness: 1.0
+            });
 
-                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                    texture.repeat.x = texture.repeat.y = 16;
-                    texture.needsUpdate = true;
+            var platformMaterial = new THREE.MeshPhysicalMaterial({
+              color: 0xFFFFFF,
+              roughness: 1.0,
+              metalness: 1.0
+            });
 
-                }
+            var walkwayMaterial = new THREE.MeshPhysicalMaterial({
+              color: 0xFFFFFF,
+              roughness: 1.0,
+              metalness: 1.0
+            });
 
-                function brickTextureResolve(texture) {
+            objLoader.load('assets/environment/centerPlatform.obj', function(center) {
 
-                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                    texture.repeat.x = texture.repeat.y = 3;
-                    texture.needsUpdate = true;
+              center.children[0].material.dispose();
+              center.children[0].material = platformMaterial;
+              object.add(center.children[0]);
 
-                }
+            });
 
-                var mtlLoader = new THREE.MTLLoader();
-                mtlLoader.load('assets/environment/cubeSceneWithSpheres5.mtl', function(loadedMaterials) {
+            object.position.y -= 1.8;
+            for (var i in object.children) {
 
-                    var objLoader = new THREE.OBJLoader();
-                    objLoader.setMaterials(loadedMaterials);
+              object.children[i].material.dispose();
 
-                    objLoader.load('assets/environment/cubeSceneWithSpheres5.obj', function(object) {
+              if (i == 8 || i == 9 || i == 12 || i == 13 || i == 14 || i == 15 || i == 16 || i == 17 || i == 18) {
 
-                        scene.add(object);
+                object.children[i].material = buildingMaterial;
 
-                        // object.children[0] - object.children[7] are center spheres
-                        // object.children[8] - object.children[9], &
-                        // object.children[12] - object.children[18] are outer buildings
-                        // object.children[10] is center walkway
-                        // object.children[11] is center platform
-                        // object.children[19] is outer platform
+              } else if (i == 11 || i == 19) {
 
-                        var buildingMaterial = new THREE.MeshPhysicalMaterial({
-                            color: 0xFFFFFF,
-                            roughness: 1.0,
-                            metalness: 1.0,
-                            map: pillar,
-                            normalMap: pillarNormal,
-                            roughnessMap: pillarRoughness,
-                            metalnessMap: pillarMetallic
-                        });
+                object.children[i].visible = false;
+                object.children[i].material = platformMaterial;
 
-                        ////////////////
+              } else if (i == 10) {
 
-                        var buildingNodeMaterial = new THREE.StandardNodeMaterial();
+                object.children[i].visible = false;
+                object.children[i].material = walkwayMaterial;
 
-                        var uvOffset = new THREE.OperatorNode(
-                            new THREE.FloatNode( 0 ),
-                            new THREE.UVNode(),
-                            THREE.OperatorNode.ADD
-                        );
+              } else {
 
-                        var pillarScale = new THREE.OperatorNode(
-                            uvOffset,
-                            new THREE.FloatNode( 16 ),
-                            THREE.OperatorNode.MUL
-                        );
+//                 meshes.push(object.children[i]);
+                var offset = object.children[i].geometry.center();
+                object.children[i].position.add(offset.negate());
+                object.children[i].visible = false;
 
-                        var grassScale = new THREE.OperatorNode(
-                            uvOffset,
-                            new THREE.FloatNode( 8 ),
-                            THREE.OperatorNode.MUL
-                        );
-
-                        var maskScale = new THREE.OperatorNode(
-                            uvOffset,
-                            new THREE.FloatNode( 8 ),
-                            THREE.OperatorNode.MUL
-                        );
-
-                        var mask = new THREE.TextureNode( decal, maskScale );
-                        var maskAlphaChannel = new THREE.SwitchNode( mask, 'w' );
-
-                        var blend = new THREE.Math3Node(
-                            new THREE.TextureNode(pillar, pillarScale),
-                            new THREE.TextureNode(grass, grassScale),
-                            maskAlphaChannel,
-                            THREE.Math3Node.MIX
-                        );
-
-                        var normalBlend = new THREE.Math3Node(
-                            new THREE.TextureNode(pillarNormal, pillarScale),
-                            new THREE.TextureNode(grassNormal, grassScale),
-                            maskAlphaChannel,
-                            THREE.Math3Node.MIX
-                        );
-
-                        buildingNodeMaterial.color = blend;
-                        buildingMaterial.normal = normalBlend;
-                        buildingMaterial.roughness = new THREE.TextureNode(pillarRoughness, pillarScale);
-                        buildingMaterial.metalness = new THREE.TextureNode(pillarMetallic, pillarScale);
-
-                        buildingNodeMaterial.build();
-
-                        ////////////////
-
-                        var platformMaterial = new THREE.MeshPhysicalMaterial({
-                            color: 0xFFFFFF,
-                            roughness: 1.0,
-                            metalness: 1.0,
-                            map: brick,
-                            normalMap: brickNormal,
-                            roughnessMap: brickRoughness,
-                            metalnessMap: brickMetallic
-                        });
-
-                        var walkwayMaterial = new THREE.MeshPhysicalMaterial({
-                            color: 0xFFFFFF,
-                            roughness: 1.0,
-                            metalness: 1.0,
-                            map: pillar,
-                            normalMap: pillarNormal,
-                            roughnessMap: pillarRoughness,
-                            metalnessMap: pillarMetallic
-                        });
-
-                        objLoader.load('assets/environment/centerPlatform.obj', function(center) {
-
-                            center.children[0].material.dispose();
-                            center.children[0].material = platformMaterial;
-                            object.add(center.children[0]);
-
-                        });
-
-                        object.position.y -= 1.8;
-                        for (var i in object.children) {
-
-                            object.children[i].material.dispose();
-
-                            if (i == 8 || i == 9 || i == 12 || i == 13 || i == 14 || i == 15 || i == 16 || i == 17 || i == 18) {
-
-                                object.children[i].material = buildingNodeMaterial;
-
-                            } else if (i == 11 || i == 19) {
-
-                                object.children[i].visible = false;
-                                object.children[i].material = platformMaterial;
-
-                            } else if (i == 10) {
-
-                                object.children[i].visible = false;
-                                object.children[i].material = walkwayMaterial;
-
-                            } else {
-
-                                var offset = object.children[i].geometry.center();
-                                object.children[i].position.add(offset.negate());
-                                object.children[i].visible = false;
-
-                            }
-
-                        }
-
-                    });
-
-                });
-
-                // water
-
-                new THREE.TextureLoader().load('assets/environment/waternormals.jpg', function(texture) {
-                    waterNormals = texture;
-                    waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
-
-                    water = new THREE.Water(effect, camera, scene, {
-                        textureWidth: 1024,
-                        textureHeight: 1024,
-                        waterNormals: waterNormals,
-                        alpha: 	0.9,
-                        sunColor: 0xffffff,
-                        waterColor: 0x001e0f,
-                        distortionScale: 1,
-                    });
-
-                    var mirrorMesh = new THREE.Mesh(
-                        new THREE.PlaneBufferGeometry(4.5, 4.5),
-                        water.material
-                    );
-
-                    mirrorMesh.add(water);
-                    mirrorMesh.rotation.x = -Math.PI * 0.5;
-                    mirrorMesh.position.y = -1.8;
-                    scene.add(mirrorMesh);
-
-                });
-
-                // stream
-
-                var image = document.createElement('img');
-                image.crossOrigin = 'Anonymous';
-                image.onload = function() {
-                    var canvas = document.createElement('CANVAS');
-                    var ctx = canvas.getContext('2d');
-                    var dataURL;
-                    canvas.height = this.height;
-                    canvas.width = this.width;
-                    ctx.drawImage(this, 0, 0);
-                    dataURL = canvas.toDataURL('video/jpeg');
-
-                    new THREE.TextureLoader().load(dataURL, function(texture) {
-
-                        console.log(texture);
-
-                        var planeGeo = new THREE.PlaneBufferGeometry(2, 2);
-                        var planeMat = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide});
-                        var plane = new THREE.Mesh(planeGeo, planeMat);
-                        plane.position.set(0, 0, 0);
-                        plane.rotation.set(0, Math.PI/2, 0);
-                        scene.add(plane);
-
-                    });
-                };
-                image.src = "https://crossorigin.me/http://www.textures.com/system/categories/356/frontend-large.jpg";
-
-//                 new THREE.TextureLoader().load('https://crossorigin.me/http://www.textures.com/system/categories/356/frontend-large.jpg', function(texture) {
-
-//                     console.log(texture);
-
-//                     var planeGeo = new THREE.PlaneBufferGeometry(2, 2);
-//                     var planeMat = new THREE.MeshBasicMaterial({map: texture});
-//                     var plane = new THREE.Mesh(planeGeo, planeMat);
-//                     plane.position.set(0, 0, 0);
-//                     plane.rotation.set(0, Math.PI/2, 0);
-//                     scene.add(plane);
-
-//                 });
-
-                // lights
-
-                var mainLight = new THREE.PointLight( 0x59876E, 5, 100, 1);
-                mainLight.position.set(0, 2.9, 0);
-                scene.add( mainLight );
-
-                var secondaryLight = new THREE.PointLight(0xC7D6DB, 3, 25, 1);
-                secondaryLight.position.set(-10.5, 2.9, 0.2);
-                scene.add( secondaryLight );
-
-                var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.3);
-                scene.add( ambientLight );
-
-                // events
-
-                window.addEventListener('resize', onWindowResize, false);
-
-                container.addEventListener('mousemove', onMouseMove, false);
-                container.addEventListener('click', onMouseClick, false);
-
-                window.addEventListener('vrdisplayactivated', function(event) {
-
-                    controls.enabled = false;
-                    effect.requestPresent();
-
-                }, false);
-                window.addEventListener('vrdisplaydeactivated', function(event) {
-
-                    controls.enabled = true;
-                    effect.exitPresent();
-                    camera.position.set(0, 3, 13.675);
-
-                }, false);
+              }
 
             }
 
-            function onWindowResize() {
+            var textureLoader = new THREE.TextureLoader();
 
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
+            textureLoader.load('assets/environment/pillarMat_basecolor.jpg', function(texture) {
 
-                renderer.setSize(window.innerWidth, window.innerHeight);
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 16;
+              texture.needsUpdate = true;
 
-            }
+              buildingMaterial.map = texture;
+              buildingMaterial.needsUpdate = true;
 
-            function onMouseMove(event) {
+            });
+            textureLoader.load('assets/environment/pillarMat_normal.jpg', function(texture) {
 
-            }
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 16;
+              texture.needsUpdate = true;
 
-            function onMouseClick(event) {
+              buildingMaterial.normalMap = texture;
+              buildingMaterial.needsUpdate = true;
 
-            }
+              walkwayMaterial.normalMap = texture;
+              walkwayMaterial.needsUpdate = true;
 
-            function animate() {
+            });
+            textureLoader.load('assets/environment/pillarMat_roughness.jpg', function(texture) {
 
-                requestAnimationFrame(animate);
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 16;
+              texture.needsUpdate = true;
 
-                if (controls.enabled) {
+              buildingMaterial.roughnessMap = texture;
+              buildingMaterial.needsUpdate = true;
 
-                    controls.update();
+              walkwayMaterial.roughnessMap = texture;
+              walkwayMaterial.needsUpdate = true;
 
-                } else {
+            });
+            textureLoader.load('assets/environment/pillarMat_metallic.jpg', function(texture) {
 
-                    vrControls.update();
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 16;
+              texture.needsUpdate = true;
 
-                }
+              buildingMaterial.metalnessMap = texture;
+              buildingMaterial.needsUpdate = true;
 
-                render();
+              walkwayMaterial.metalnessMap = texture;
+              walkwayMaterial.needsUpdate = true;
 
-            }
+            });
 
-            function render() {
+            textureLoader.load('assets/environment/pillarMatBrick_basecolor.jpg', function(texture) {
 
-                effect.render(scene, camera);
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 3;
+              texture.needsUpdate = true;
 
-                if (water !== undefined) {
+              platformMaterial.map = texture;
+              platformMaterial.needsUpdate = true;
 
-                    water.material.uniforms.time.value += 0.3 / 60.0;
-                    water.render();
+            });
+            textureLoader.load('assets/environment/pillarMatBrick_normal.jpg', function(texture) {
 
-                }
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 3;
+              texture.needsUpdate = true;
 
-                effect.submitFrame();
+              platformMaterial.normalMap = texture;
+              platformMaterial.needsUpdate = true;
 
-            }
-        </script>
-    </body>
+            });
+            textureLoader.load('assets/environment/pillarMatBrick_roughness.jpg', function(texture) {
+
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 3;
+              texture.needsUpdate = true;
+
+              platformMaterial.roughnessMap = texture;
+              platformMaterial.needsUpdate = true;
+
+            });
+            textureLoader.load('assets/environment/pillarMatBrick_metallic.jpg', function(texture) {
+
+              texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+              texture.repeat.x = texture.repeat.y = 3;
+              texture.needsUpdate = true;
+
+              platformMaterial.metalnessMap = texture;
+              platformMaterial.needsUpdate = true;
+
+            });
+
+            textureLoader.load('assets/environment/pillarMat_basecolor.jpg', function(texture) {
+
+              walkwayMaterial.map = texture;
+              walkwayMaterial.needsUpdate = true;
+
+            });
+
+          });
+
+        });
+
+        // water
+
+        new THREE.TextureLoader().load('assets/environment/waternormals.jpg', function(texture) {
+          waterNormals = texture;
+          waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
+
+          water = new THREE.Water(effect, camera, scene, {
+            textureWidth: 1024,
+            textureHeight: 1024,
+            waterNormals: waterNormals,
+            alpha: 	0.9,
+//             sunDirection: new THREE.Vector3(-1, 1, -1).normalize(),
+            sunColor: 0xffffff,
+            waterColor: 0x001e0f,
+            distortionScale: 1,
+          });
+
+          var mirrorMesh = new THREE.Mesh(
+            new THREE.PlaneBufferGeometry(4.5, 4.5),
+            water.material
+          );
+
+          mirrorMesh.add(water);
+          mirrorMesh.rotation.x = -Math.PI * 0.5;
+          mirrorMesh.position.y = -1.8;
+          scene.add(mirrorMesh);
+
+        });
+
+        // cubes
+
+        var cubeGeometry = new THREE.BoxBufferGeometry(1, 1, 1);
+//         var cubeMaterial = new THREE.MeshPhysicalMaterial({});
+
+        var radiusMin = 13;
+        var radiusMax = 16;
+        var scaleMin = 0.5;
+        var scaleMax = 2.0;
+        var population = 25;
+
+        scene.add(cubeGroup);
+
+        for (var i = 0; i < population; i ++) {
+
+          var cubeMaterial = new THREE.MeshPhysicalMaterial({});
+          var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+
+          var radius = radiusMin + ((radiusMax - radiusMin) * Math.cbrt(Math.random()));
+          var theta = 2 * Math.PI * Math.random();
+          var phi = Math.acos((2 * Math.random()) - 1);
+
+          var x = radius * Math.cos(theta) * Math.sin(phi);
+          var y = radius * Math.sin(theta) * Math.sin(phi);
+          var z = radius * Math.cos(phi);
+
+          var scale = scaleMin + (scaleMax - scaleMin) * Math.random();
+
+          cube.position.set(x, y, z);
+          cube.rotation.set( 2 * Math.PI * Math.random(), 2 * Math.PI * Math.random(), 2 * Math.PI * Math.random() );
+          cube.scale.set(scale, scale, scale);
+          cube.updateMatrix();
+          cubeGroup.add(cube);
+
+          meshes.push(cube);
+
+        }
+
+        // lights
+
+        var mainLight = new THREE.PointLight( 0x59876E, 5, 100, 1);
+        mainLight.position.set(0, 2.9, 0);
+        scene.add( mainLight );
+
+        var secondaryLight = new THREE.PointLight(0xC7D6DB, 3, 25, 1);
+        secondaryLight.position.set(-10.5, 2.9, 0.2);
+        scene.add( secondaryLight );
+
+        var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.3);
+        scene.add( ambientLight );
+
+        // events
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        container.addEventListener('mousemove', onMouseMove, false);
+        container.addEventListener('click', onMouseClick, false);
+
+        window.addEventListener('vrdisplayactivated', function(event) {
+
+          controls.enabled = false;
+          effect.requestPresent();
+
+        }, false);
+        window.addEventListener('vrdisplaydeactivated', function(event) {
+
+          controls.enabled = true;
+          effect.exitPresent();
+          camera.position.set(0, 3, 13.675);
+
+        }, false);
+
+        // ui
+
+        var toolbar = new KINGUI.Toolbar('toolbar', {color: 'rgba(0, 0, 0, 0)', segments: 2});
+        var rightSeg = toolbar.segments[1];
+
+        var logo = new KINGUI.ToolbarCustom('logo', function() {
+
+          uiEnabled = !uiEnabled;
+
+          $('#middleWrapper').fadeToggle(2000);
+          $('#containerBackground').fadeToggle(2000, function() {
+
+            sceneEnabled = !sceneEnabled;
+
+          });
+
+        });
+        toolbar.add(logo);
+
+        $('#colorPickerColors').click(function(event) {
+
+          if (!uiEnabled) return;
+
+          uiEnabled = false;
+
+          var color = $(event.target).css('background-color');
+
+          scene.background.set(color).addScalar(0.3);
+          scene.fog.color.set(color).addScalar(-0.3);
+          mainLight.color.set(color).addScalar(-0.3);
+          secondaryLight.color.set(color).offsetHSL(0.20, 0.20, 0.20);
+
+          $('#middleWrapper').fadeOut(2000);
+          $('#containerBackground').fadeOut(2000, function() {
+
+            sceneEnabled = true;
+
+          });
+
+        });
+
+      }
+
+      function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+      }
+
+      function onMouseMove(event) {
+
+        if (!sceneEnabled) return;
+
+        mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+        mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+
+        // See if the ray from the camera into the world hits one of our meshes
+        var intersects = raycaster.intersectObjects(meshes);
+
+        if (intersects.length > 0) {
+
+          if (intersected != intersects[0].object) {
+
+            if (intersected) intersected.material.color.copy(baseColor);
+
+            intersected = intersects[0].object;
+            baseColor.copy(intersected.material.color);
+
+            intersected.material.color.setHex(0xff0000);
+
+          }
+
+        } else if (intersected) {
+
+          intersected.material.color.copy(baseColor);
+          intersected = null;
+
+
+
+        }
+
+      }
+
+      function onMouseClick(event) {
+
+        if (!intersected) return;
+
+//         var sound = chimes[Math.floor(Math.random() * chimes.length)];
+//         if (sound.isPlaying) sound.stop();
+
+//         sound.position.copy(intersected.position);
+//         sound.play();
+
+        TWEEN.removeAll();
+
+        if (focusedCube === intersected) {
+
+          var tween = new TWEEN.Tween(intersected.position);
+          tween.to({
+            x: focusedCubeOriginalPosition.x,
+            y: focusedCubeOriginalPosition.y,
+            z: focusedCubeOriginalPosition.z
+          }, 1 * 1000);
+          tween.easing(TWEEN.Easing.Cubic.Out);
+          tween.onComplete(function() {
+
+            focusedCube = null;
+
+          });
+          tween.start();
+
+        } else if (focusedCube !== null) {
+
+          var tween = new TWEEN.Tween(focusedCube.position);
+          tween.to({
+            x: focusedCubeOriginalPosition.x,
+            y: focusedCubeOriginalPosition.y,
+            z: focusedCubeOriginalPosition.z
+          }, 1 * 1000);
+          tween.easing(TWEEN.Easing.Cubic.Out);
+          tween.start();
+
+          focusedCube = intersected;
+          focusedCubeOriginalPosition = intersected.position.clone();
+
+          var tween = new TWEEN.Tween(intersected.position);
+          tween.to({
+            x: landingPoint.x,
+            y: landingPoint.y,
+            z: landingPoint.z
+          }, 2 * 1000);
+          tween.easing(TWEEN.Easing.Cubic.Out);
+          tween.start();
+
+        } else {
+
+          focusedCube = intersected;
+          focusedCubeOriginalPosition = intersected.position.clone();
+
+          var tween = new TWEEN.Tween(intersected.position);
+          tween.to({
+            x: landingPoint.x,
+            y: landingPoint.y,
+            z: landingPoint.z
+          }, 2 * 1000);
+          tween.easing(TWEEN.Easing.Cubic.Out);
+          tween.start();
+
+        }
+
+      }
+
+      function animate() {
+
+        requestAnimationFrame(animate);
+
+        if (controls.enabled) {
+
+          controls.update();
+
+        } else {
+
+          vrControls.update();
+
+        }
+
+        cubeGroup.rotation.z += 0.00005;
+        cubeGroup.rotation.x += 0.0001;
+
+        if (focusedCube !== null) {
+
+          focusedCube.rotation.y += 0.005;
+
+        }
+
+        TWEEN.update();
+
+        render();
+
+      }
+
+      function render() {
+
+        effect.render(scene, camera);
+
+        if (water !== undefined) {
+
+          water.material.uniforms.time.value += 0.3 / 60.0;
+          water.render();
+
+        }
+
+        effect.submitFrame();
+
+      }
+    </script>
+  </body>
 </html>
