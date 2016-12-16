@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400i,600,700');
+
+html {
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+p, h1, h2, h3, h4, h5 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 2.7em;
+}
+
+body {
+  margin: 0px;
+  overflow: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#main {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#containerBackground {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+
+#middleWrapper {
+  position: absolute;
+  top: 20%;
+  width: 400px;
+  text-align: left;
+  color: white;
+  margin-left: 10vw;
+  font-family: openSansSemiBold;
+}
+
+#middleHeaderOne {
+  font-size: 1.5vw;
+  color: white;
+  letter-spacing: 0.7vw;
+  margin-bottom: 1.9vh;
+}
+
+#underline {
+  position: relative;
+  background-color: #f6c472;
+  width: 20%;
+  height: 0.5vh;
+  left: 40%;
+}
+
+#svgTest {
+  position: relative;
+  width: 20%;
+  margin-top: 2%;
+  margin-bottom: 2.5%;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+#colorPickWrapper {
+  position: relative;
+  width: 70%;
+  height: 8vh;
+  border-radius: 50px;
+  background-color:rgba(255, 255, 255, 0.7)
+}
+
+#colorPickerText {
+  position: absolute;;
+  top: 40%;
+  color:#000;
+  text-align: center;
+  left:31%;
+}
+
+#colorPickerColors {
+  position: absolute;
+  width: 76%;
+  height: 2vh;
+  left: 12%;
+  top:30%;
+  cursor: pointer;
+}
+
+#colorPickerColors span {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  position: relative;
+  display: inline;
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+
+#colorPickerColors span:hover {
+  border: 1px solid white;
+}
+
+#colorPickerColorsRed {
+  background-color: #512DA8;
+  border-radius: 15px 0px 0px 15px;
+}
+
+#colorPickerColorsYellow {
+  background-color: #EEFF41;
+}
+
+#colorPickerColorsLime {
+  background-color: #64F6F0;
+}
+
+#colorPickerColorsGreen {
+  background-color:#938E9B;
+}
+
+#colorPickerColorsPink {
+  background-color: #19151F;
+  border-radius: 0px 15px 15px 0px;
+}
+
+/*@font-face {
+  font-family: openSans;
+  src: url('css/fonts/open_sans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: openSansBold;
+  src: url('css/fonts/open_sans/OpenSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: openSansSemiBold;
+  src: url('css/fonts/open_sans/OpenSans-Semibold.ttf');
+}
+
+@font-face {
+  font-family: latoHeavy;
+  src: url('css/fonts/lato/Lato-Heavy.ttf');
+}
+
+@font-face {
+  font-family: latoBold;
+  src: url('css/fonts/lato/Lato-Bold.ttf');
+}*/

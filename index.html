@@ -8,157 +8,7 @@
     <meta name="description" content="Portal for all SpinVR projects.">
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale:1.0">
-
-    <style>
-      body {
-        margin: 0px;
-        overflow: hidden;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        cursor: default;
-      }
-
-      #main {
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-      }
-
-      #containerBackground {
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.6);
-        width: 100%;
-        height: 100%;
-      }
-
-      #middleWrapper {
-        position: absolute;
-        top: 20%;
-        width: 100%;
-        text-align: center;
-        color: white;
-        font-family: openSansSemiBold;
-      }
-
-      #middleHeaderOne {
-        font-size: 1.5vw;
-        color: white;
-        letter-spacing: 0.7vw;
-        margin-bottom: 1.9vh;
-      }
-
-      #underline {
-        position: relative;
-        background-color: #f6c472;
-        width: 20%;
-        height: 0.5vh;
-        left: 40%;
-      }
-
-      #svgTest {
-        position: relative;
-        width: 20%;
-        margin-top: 2%;
-        margin-bottom: 2.5%;
-        -webkit-user-drag: none;
-        -khtml-user-drag: none;
-        -moz-user-drag: none;
-        -o-user-drag: none;
-        user-drag: none;
-      }
-
-      #colorPickWrapper {
-        position: relative;
-        width: 28%;
-        height: 8vh;
-        left: 36%;
-        border-radius: 50px;
-        border: 2px solid #78867f;
-      }
-
-      #colorPickerText {
-        position: relative;
-        font-size: 1vw;
-        top: 15%;
-      }
-
-      #colorPickerColors {
-        position: absolute;
-        width: 50%;
-        height: 2vh;
-        bottom: 20%;
-        left: 25%;
-        cursor: pointer;
-      }
-
-      #colorPickerColors span {
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        position: relative;
-        display: inline;
-        width: 20%;
-        height: 100%;
-        float: left;
-      }
-
-      #colorPickerColors span:hover {
-        border: 1px solid white;
-      }
-
-      #colorPickerColorsRed {
-        background-color: #ff6138;
-      }
-
-      #colorPickerColorsYellow {
-        background-color: #ffff9d;
-      }
-
-      #colorPickerColorsLime {
-        background-color: #beeb9f;
-      }
-
-      #colorPickerColorsGreen {
-        background-color: #00a388;
-      }
-
-      #colorPickerColorsPink {
-        background-color: #ff8598;
-      }
-
-      @font-face {
-        font-family: openSans;
-        src: url('css/fonts/open_sans/OpenSans-Regular.ttf');
-      }
-
-      @font-face {
-        font-family: openSansBold;
-        src: url('css/fonts/open_sans/OpenSans-Bold.ttf');
-      }
-
-      @font-face {
-        font-family: openSansSemiBold;
-        src: url('css/fonts/open_sans/OpenSans-Semibold.ttf');
-      }
-
-      @font-face {
-        font-family: latoHeavy;
-        src: url('css/fonts/lato/Lato-Heavy.ttf');
-      }
-
-      @font-face {
-        font-family: latoBold;
-        src: url('css/fonts/lato/Lato-Bold.ttf');
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
 
   </head>
 
@@ -169,11 +19,10 @@
     <div id="container">
       <div id="containerBackground"></div>
       <div id="middleWrapper">
-        <div id="middleHeaderOne">MADE WITH</div>
-        <div id="underline"></div>
-        <img id="svgTest" src="css/images/Areo.svg">
+        <h1>Create Stunning VR Experiences with Ease</h1>
+        <!-- <div id="underline"></div>
+        <img id="svgTest" src="css/images/Areo.svg"> -->
         <div id="colorPickWrapper">
-          <div id="colorPickerText">Choose a Colour</div>
           <div id="colorPickerColors">
             <span id="colorPickerColorsRed"></span>
             <span id="colorPickerColorsYellow"></span>
@@ -181,6 +30,7 @@
             <span id="colorPickerColorsGreen"></span>
             <span id="colorPickerColorsPink"></span>
           </div>
+          <p id="colorPickerText">Choose a Colour</p>
         </div>
       </div>
     </div>
@@ -559,13 +409,13 @@
         var logo = new KINGUI.ToolbarCustom('logo', function() {
 
           uiEnabled = !uiEnabled;
-
-          $('#middleWrapper').fadeToggle(2000);
-          $('#containerBackground').fadeToggle(2000, function() {
-
-            sceneEnabled = !sceneEnabled;
-
-          });
+          //
+          // $('#middleWrapper').fadeToggle(2000);
+          // $('#containerBackground').fadeToggle(2000, function() {
+          //
+          //   sceneEnabled = !sceneEnabled;
+          //
+          // });
 
         });
         toolbar.add(logo);
@@ -583,10 +433,11 @@
           mainLight.color.set(color).addScalar(-0.3);
           secondaryLight.color.set(color).offsetHSL(0.20, 0.20, 0.20);
 
-          $('#middleWrapper').fadeOut(2000);
+          // $('#middleWrapper').fadeOut(2000);
           $('#containerBackground').fadeOut(2000, function() {
-
+          $('h1').css('text-shadow','0px 0px 6px #47424E')
             sceneEnabled = true;
+            uiEnabled = true;
 
           });
 
