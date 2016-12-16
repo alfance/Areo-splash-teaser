@@ -1,0 +1,567 @@
+<!-- Copyright by Spin VR Corp, 2016 -->
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Spin VR Homepage</title>
+        <link rel="shortcut icon" type="image/x-icon" id="favicon" href="css/images/browser_icon.ico">
+        <meta name="description" content="Portal for all SpinVR projects.">
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale:1.0">
+
+        <style>
+            body {
+                margin: 0px;
+                overflow: hidden;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: default;
+            }
+
+            #container {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 10;
+            }
+
+            #toolbar {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                top: 0;
+            }
+
+            #logo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: url('css/images/SpinVR_Logo.png') no-repeat center;
+                background-size: 111px 21px;
+                width: 111px;
+                height: 40px;
+                margin-left: 8px;
+                opacity: 0.8;
+            }
+
+            #logo:hover {
+                cursor: pointer;
+                opacity: 1.0;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <link rel="stylesheet" href="js/libs/kingui/kingui.css" />
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="js/libs/mediaelement/mediaelement-and-player.min.js"></script>
+        <link rel="stylesheet" href="js/libs/mediaelement/mediaelementplayer.css" />
+
+        <div id="container">
+            <div id="logo"></div>
+        </div>
+        <video width="640" height="360" id="player1" preload="none" autoplay="true">
+            <source type="video/youtube" src="https://www.youtube.com/embed/i2nuHEGhwiw" />
+        </video>
+
+        <script src="js/libs/tween.js/Tween.js"></script>
+        <script src="js/libs/three.js/three.js"></script>
+        <script src="js/libs/kingui/kingui.js"></script>
+
+        <script src="js/libs/three.js/controls/OrbitControls.js"></script>
+        <script src="js/libs/three.js/controls/VRControls.js"></script>
+
+        <script src="js/libs/three.js/effects/VREffect.js"></script>
+
+        <script src="js/libs/three.js/loaders/OBJLoader.js"></script>
+        <script src="js/libs/three.js/loaders/MTLLoader.js"></script>
+
+        <script src="js/libs/three.js/renderers/CSS3DRenderer.js"></script>
+
+        <script src="js/libs/three.js/Mirror.js"></script>
+        <script src="js/libs/three.js/WaterShader.js"></script>
+
+        <!-- NodeLibrary -->
+        <script src="js/libs/three.js/nodes/GLNode.js"></script>
+        <script src="js/libs/three.js/nodes/RawNode.js"></script>
+        <script src="js/libs/three.js/nodes/TempNode.js"></script>
+        <script src="js/libs/three.js/nodes/InputNode.js"></script>
+        <script src="js/libs/three.js/nodes/ConstNode.js"></script>
+        <script src="js/libs/three.js/nodes/FunctionNode.js"></script>
+        <script src="js/libs/three.js/nodes/FunctionCallNode.js"></script>
+        <script src="js/libs/three.js/nodes/AttributeNode.js"></script>
+        <script src="js/libs/three.js/nodes/NodeBuilder.js"></script>
+        <script src="js/libs/three.js/nodes/NodeLib.js"></script>
+        <script src="js/libs/three.js/nodes/NodeMaterial.js"></script>
+
+        <!-- Accessors -->
+        <script src="js/libs/three.js/nodes/accessors/PositionNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/NormalNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/UVNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/ScreenUVNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/ColorsNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/CameraNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/ReflectNode.js"></script>
+        <script src="js/libs/three.js/nodes/accessors/LightNode.js"></script>
+
+        <!-- Inputs -->
+        <script src="js/libs/three.js/nodes/inputs/IntNode.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/FloatNode.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/ColorNode.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/Vector2Node.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/Vector3Node.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/Vector4Node.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/TextureBaseNode.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/TextureNode.js"></script>
+        <script src="js/libs/three.js/nodes/inputs/CubeTextureNode.js"></script>
+
+        <!-- Math -->
+        <script src="js/libs/three.js/nodes/math/Math1Node.js"></script>
+        <script src="js/libs/three.js/nodes/math/Math2Node.js"></script>
+        <script src="js/libs/three.js/nodes/math/Math3Node.js"></script>
+        <script src="js/libs/three.js/nodes/math/OperatorNode.js"></script>
+
+        <!-- Utils -->
+        <script src="js/libs/three.js/nodes/utils/SwitchNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/JoinNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/TimerNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/RoughnessToBlinnExponentNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/VelocityNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/LuminanceNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/ColorAdjustmentNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/NoiseNode.js"></script>
+        <script src="js/libs/three.js/nodes/utils/ResolutionNode.js"></script>
+
+        <!-- Phong Material -->
+        <script src="js/libs/three.js/nodes/materials/PhongNode.js"></script>
+        <script src="js/libs/three.js/nodes/materials/PhongNodeMaterial.js"></script>
+
+        <!-- Standard Material -->
+        <script src="js/libs/three.js/nodes/materials/StandardNode.js"></script>
+        <script src="js/libs/three.js/nodes/materials/StandardNodeMaterial.js"></script>
+
+        <script>
+
+            var camera, controls, effect, scene, renderer, cssRenderer, cssScene;
+
+            var audioListener = new THREE.AudioListener();
+            var audioLoader = new THREE.AudioLoader();
+
+            var raycaster = new THREE.Raycaster();
+            var mouse = new THREE.Vector2();
+            var intersected;
+
+            var meshes = [];
+
+            var water, waterNormals;
+
+            init();
+            animate();
+
+            function init() {
+
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xE9FDEB);
+                scene.fog = new THREE.Fog(0x7C8D7A, 0.5, 60);
+
+                cssScene = new THREE.Scene();
+
+                renderer = new THREE.WebGLRenderer({antialias: true});
+                renderer.setClearColor(scene.fog.color);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+                var container = document.getElementById('container');
+                container.appendChild(renderer.domElement);
+
+                camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+                camera.position.set(0, 3, 13.675);
+
+                controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+                effect = new THREE.VREffect(renderer);
+                effect.autoSubmitFrame = false;
+                vrControls = new THREE.VRControls(camera);
+
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.05;
+
+                controls.enableRotate = true;
+                controls.rotateSpeed = 0.1;
+
+                controls.enableZoom = true;
+                controls.zoomSpeed = 0.5;
+                //         controls.minDistance = 7;
+                //         controls.maxDistance = 14;
+
+                controls.enablePan = false;
+
+                controls.autoRotate = true;
+                controls.autoRotateSpeed = -0.01;
+
+                // environment
+
+                var textureLoader = new THREE.TextureLoader();
+
+                var grass = textureLoader.load('assets/environment/grasslight-big.jpg', pillarTextureResolve);
+                var grassNormal = textureLoader.load('assets/environment/grasslight-big-nm.jpg', pillarTextureResolve);
+
+                var decal = textureLoader.load('assets/environment/decal-diffuse.png', function(texture) {
+
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.needsUpdate = true;
+
+                });
+
+                var pillar = textureLoader.load('assets/environment/pillarMat_basecolor.jpg', pillarTextureResolve);
+                var pillarNormal = textureLoader.load('assets/environment/pillarMat_normal.jpg', pillarTextureResolve);
+                var pillarRoughness = textureLoader.load('assets/environment/pillarMat_roughness.jpg', pillarTextureResolve);
+                var pillarMetallic = textureLoader.load('assets/environment/pillarMat_metallic.jpg', pillarTextureResolve);
+
+                var brick = textureLoader.load('assets/environment/pillarMatBrick_basecolor.jpg', brickTextureResolve);
+                var brickNormal = textureLoader.load('assets/environment/pillarMatBrick_normal.jpg', brickTextureResolve);
+                var brickRoughness = textureLoader.load('assets/environment/pillarMatBrick_roughness.jpg', brickTextureResolve);
+                var brickMetallic = textureLoader.load('assets/environment/pillarMatBrick_metallic.jpg', brickTextureResolve);
+
+                function pillarTextureResolve(texture) {
+
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.x = texture.repeat.y = 16;
+                    texture.needsUpdate = true;
+
+                }
+
+                function brickTextureResolve(texture) {
+
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.x = texture.repeat.y = 3;
+                    texture.needsUpdate = true;
+
+                }
+
+                var mtlLoader = new THREE.MTLLoader();
+                mtlLoader.load('assets/environment/cubeSceneWithSpheres5.mtl', function(loadedMaterials) {
+
+                    var objLoader = new THREE.OBJLoader();
+                    objLoader.setMaterials(loadedMaterials);
+
+                    objLoader.load('assets/environment/cubeSceneWithSpheres5.obj', function(object) {
+
+                        scene.add(object);
+
+                        // object.children[0] - object.children[7] are center spheres
+                        // object.children[8] - object.children[9], &
+                        // object.children[12] - object.children[18] are outer buildings
+                        // object.children[10] is center walkway
+                        // object.children[11] is center platform
+                        // object.children[19] is outer platform
+
+                        var buildingMaterial = new THREE.MeshPhysicalMaterial({
+                            color: 0xFFFFFF,
+                            roughness: 1.0,
+                            metalness: 1.0,
+                            map: pillar,
+                            normalMap: pillarNormal,
+                            roughnessMap: pillarRoughness,
+                            metalnessMap: pillarMetallic
+                        });
+
+                        ////////////////
+
+                        var buildingNodeMaterial = new THREE.StandardNodeMaterial();
+
+                        var uvOffset = new THREE.OperatorNode(
+                            new THREE.FloatNode( 0 ),
+                            new THREE.UVNode(),
+                            THREE.OperatorNode.ADD
+                        );
+
+                        var pillarScale = new THREE.OperatorNode(
+                            uvOffset,
+                            new THREE.FloatNode( 16 ),
+                            THREE.OperatorNode.MUL
+                        );
+
+                        var grassScale = new THREE.OperatorNode(
+                            uvOffset,
+                            new THREE.FloatNode( 8 ),
+                            THREE.OperatorNode.MUL
+                        );
+
+                        var maskScale = new THREE.OperatorNode(
+                            uvOffset,
+                            new THREE.FloatNode( 8 ),
+                            THREE.OperatorNode.MUL
+                        );
+
+                        var mask = new THREE.TextureNode( decal, maskScale );
+                        var maskAlphaChannel = new THREE.SwitchNode( mask, 'w' );
+
+                        var blend = new THREE.Math3Node(
+                            new THREE.TextureNode(pillar, pillarScale),
+                            new THREE.TextureNode(grass, grassScale),
+                            maskAlphaChannel,
+                            THREE.Math3Node.MIX
+                        );
+
+                        var normalBlend = new THREE.Math3Node(
+                            new THREE.TextureNode(pillarNormal, pillarScale),
+                            new THREE.TextureNode(grassNormal, grassScale),
+                            maskAlphaChannel,
+                            THREE.Math3Node.MIX
+                        );
+
+                        buildingNodeMaterial.color = blend;
+                        buildingMaterial.normal = normalBlend;
+                        buildingMaterial.roughness = new THREE.TextureNode(pillarRoughness, pillarScale);
+                        buildingMaterial.metalness = new THREE.TextureNode(pillarMetallic, pillarScale);
+
+                        buildingNodeMaterial.build();
+
+                        ////////////////
+
+                        var platformMaterial = new THREE.MeshPhysicalMaterial({
+                            color: 0xFFFFFF,
+                            roughness: 1.0,
+                            metalness: 1.0,
+                            map: brick,
+                            normalMap: brickNormal,
+                            roughnessMap: brickRoughness,
+                            metalnessMap: brickMetallic
+                        });
+
+                        var walkwayMaterial = new THREE.MeshPhysicalMaterial({
+                            color: 0xFFFFFF,
+                            roughness: 1.0,
+                            metalness: 1.0,
+                            map: pillar,
+                            normalMap: pillarNormal,
+                            roughnessMap: pillarRoughness,
+                            metalnessMap: pillarMetallic
+                        });
+
+                        objLoader.load('assets/environment/centerPlatform.obj', function(center) {
+
+                            center.children[0].material.dispose();
+                            center.children[0].material = platformMaterial;
+                            object.add(center.children[0]);
+
+                        });
+
+                        object.position.y -= 1.8;
+                        for (var i in object.children) {
+
+                            object.children[i].material.dispose();
+
+                            if (i == 8 || i == 9 || i == 12 || i == 13 || i == 14 || i == 15 || i == 16 || i == 17 || i == 18) {
+
+                                object.children[i].material = buildingNodeMaterial;
+
+                            } else if (i == 11 || i == 19) {
+
+                                object.children[i].visible = false;
+                                object.children[i].material = platformMaterial;
+
+                            } else if (i == 10) {
+
+                                object.children[i].visible = false;
+                                object.children[i].material = walkwayMaterial;
+
+                            } else {
+
+                                var offset = object.children[i].geometry.center();
+                                object.children[i].position.add(offset.negate());
+                                object.children[i].visible = false;
+
+                            }
+
+                        }
+
+                    });
+
+                });
+
+                // water
+
+                new THREE.TextureLoader().load('assets/environment/waternormals.jpg', function(texture) {
+                    waterNormals = texture;
+                    waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
+
+                    water = new THREE.Water(effect, camera, scene, {
+                        textureWidth: 1024,
+                        textureHeight: 1024,
+                        waterNormals: waterNormals,
+                        alpha: 	0.9,
+                        sunColor: 0xffffff,
+                        waterColor: 0x001e0f,
+                        distortionScale: 1,
+                    });
+
+                    var mirrorMesh = new THREE.Mesh(
+                        new THREE.PlaneBufferGeometry(4.5, 4.5),
+                        water.material
+                    );
+
+                    mirrorMesh.add(water);
+                    mirrorMesh.rotation.x = -Math.PI * 0.5;
+                    mirrorMesh.position.y = -1.8;
+                    scene.add(mirrorMesh);
+
+                });
+
+                // stream
+
+                var image = document.createElement('img');
+                image.crossOrigin = 'Anonymous';
+                image.onload = function() {
+                    var canvas = document.createElement('CANVAS');
+                    var ctx = canvas.getContext('2d');
+                    var dataURL;
+                    canvas.height = this.height;
+                    canvas.width = this.width;
+                    ctx.drawImage(this, 0, 0);
+                    dataURL = canvas.toDataURL('video/jpeg');
+
+                    new THREE.TextureLoader().load(dataURL, function(texture) {
+
+                        console.log(texture);
+
+                        var planeGeo = new THREE.PlaneBufferGeometry(2, 2);
+                        var planeMat = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide});
+                        var plane = new THREE.Mesh(planeGeo, planeMat);
+                        plane.position.set(0, 0, 0);
+                        plane.rotation.set(0, Math.PI/2, 0);
+                        scene.add(plane);
+
+                    });
+                };
+                image.src = "https://crossorigin.me/http://www.textures.com/system/categories/356/frontend-large.jpg";
+
+//                 new THREE.TextureLoader().load('https://crossorigin.me/http://www.textures.com/system/categories/356/frontend-large.jpg', function(texture) {
+
+//                     console.log(texture);
+
+//                     var planeGeo = new THREE.PlaneBufferGeometry(2, 2);
+//                     var planeMat = new THREE.MeshBasicMaterial({map: texture});
+//                     var plane = new THREE.Mesh(planeGeo, planeMat);
+//                     plane.position.set(0, 0, 0);
+//                     plane.rotation.set(0, Math.PI/2, 0);
+//                     scene.add(plane);
+
+//                 });
+
+                // lights
+
+                var mainLight = new THREE.PointLight( 0x59876E, 5, 100, 1);
+                mainLight.position.set(0, 2.9, 0);
+                scene.add( mainLight );
+
+                var secondaryLight = new THREE.PointLight(0xC7D6DB, 3, 25, 1);
+                secondaryLight.position.set(-10.5, 2.9, 0.2);
+                scene.add( secondaryLight );
+
+                var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.3);
+                scene.add( ambientLight );
+
+                // events
+
+                window.addEventListener('resize', onWindowResize, false);
+
+                container.addEventListener('mousemove', onMouseMove, false);
+                container.addEventListener('click', onMouseClick, false);
+
+                window.addEventListener('vrdisplayactivated', function(event) {
+
+                    controls.enabled = false;
+                    effect.requestPresent();
+
+                }, false);
+                window.addEventListener('vrdisplaydeactivated', function(event) {
+
+                    controls.enabled = true;
+                    effect.exitPresent();
+                    camera.position.set(0, 3, 13.675);
+
+                }, false);
+
+                $('#logo').click(function(event) {
+
+//                     if (controls.enabled) {
+
+//                         controls.enabled = false;
+//                         effect.requestPresent();
+
+//                     } else {
+
+//                         controls.enabled = true;
+//                         effect.exitPresent();
+//                         camera.position.set(0, 3, 13.675);
+
+//                     }
+
+                });
+
+            }
+
+            function onWindowResize() {
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+            }
+
+            function onMouseMove(event) {
+
+            }
+
+            function onMouseClick(event) {
+
+            }
+
+            function animate() {
+
+                requestAnimationFrame(animate);
+
+                if (controls.enabled) {
+
+                    controls.update();
+
+                } else {
+
+                    vrControls.update();
+
+                }
+
+                render();
+
+            }
+
+            function render() {
+
+                effect.render(scene, camera);
+
+                if (water !== undefined) {
+
+                    water.material.uniforms.time.value += 0.3 / 60.0;
+                    water.render();
+
+                }
+
+                effect.submitFrame();
+
+            }
+        </script>
+    </body>
+</html>

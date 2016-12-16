@@ -1,0 +1,684 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.kuiPanel {
+    position: absolute;
+    width: 300px;
+    height: 564px;
+    background-color: #2C2E34;
+    overflow: hidden;
+}
+
+.kuiPanelTitle {
+    position: relative;
+    font-family: latoHeavy;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 24px 20px 10px 20px;
+    letter-spacing: 1px;
+}
+
+.kuiPanelWrapper {
+    position: absolute;
+    height: 513px;
+}
+
+.kuiSegment {
+    position: relative;
+    width: 300px;
+    height: auto;
+}
+
+.kuiSegmentTitle {
+    position: relative;
+    font-family: latoBold;
+    color: #FFFFFF;
+    font-size: 13px;
+    margin: 0px 20px 0px 20px;
+    padding-top: 16px;
+}
+
+.kuiSegmentCollapse {
+    position: absolute;
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+    border: #2F8BE6 solid 2px;
+    background-color: #2F8BE6;
+    right: 0;
+    bottom: 3px;
+}
+
+.kuiSegmentCollapse:hover {
+    background-color: #61A8EE;
+    border-color: #61A8EE;
+}
+
+.kuiSegmentCollapseActive {
+    background-color: #2C2E34;
+    border-color: #6A6A6A;
+}
+
+.kuiSegmentCollapseActive:hover {
+    background-color: #2C2E34;
+    border-color: #BBBBBD;
+}
+
+.kuiFieldRow {
+    position: relative;
+    font-family: openSans;
+    font-size: 11px;
+    width: 300px;
+    height: auto;
+    margin: 16px 0px;
+}
+
+.kuiFieldName {
+    position: relative;
+    color: #93979D;
+    display: inline-block;
+    margin-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.kuiFieldInput {
+    position: absolute;
+    color: #FFFFFF;
+    right: 0px;
+    top: -5px;
+    background-color: #35373D;
+    border-radius: 3px;
+    border: 2px solid #424449;
+}
+
+.kuiFieldInput:disabled {
+    opacity: 0.3;
+}
+
+.kuiFieldInput[type="text"],
+.kuiFieldInput[type="number"],
+.kuiFieldInput[type="color"] {
+    height: 22px;
+    padding: 0px 6px;
+}
+
+.kuiFieldInput[type="text"] {
+    width: 104px;
+    margin-right: 20px;
+}
+
+.kuiFieldInput[type="number"],
+.kuiFieldInput[type="color"] {
+    width: 75px;
+    margin-right: 49px;
+}
+
+.kuiFieldInput[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin-right: 118px;
+}
+
+.kuiFieldInput[type="text"]:hover,
+.kuiFieldInput[type="number"]:hover:enabled,
+.kuiFieldInput[type="color"]:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiFieldInput[type="text"]:focus,
+.kuiFieldInput[type="number"]:focus:enabled,
+.kuiFieldInput[type="color"]:focus {
+    outline: none;
+    border-color: #6A6A6A;
+}
+
+.kuiFieldDropDown {
+    position: absolute;
+    color: #FFFFFF;
+    right: 0px;
+    top: -5px;
+    background-color: #35373D;
+    border-radius: 3px;
+    border: 2px solid #424449;
+    height: 26px;
+    padding: 0px 0px;
+    width: 120px;
+    margin-right: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('images/02_properties/ico_textfield_dropdown_arrow.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 6px) 9px;
+}
+
+.kuiFieldDropDown:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiFieldDropDown:focus {
+    outline: none;
+    border-color: #6A6A6A;
+}
+
+.kuiFieldButton {
+    position: absolute;
+    color: #FFFFFF;
+    right: 0px;
+    top: -3px;
+    width: 120px;
+    height: 22px;
+    padding: 0px 6px 0px 6px;
+    margin-right: 20px;
+    background-color: #4B4D57;
+    border-radius: 3px;
+    border: 2px solid #4B4D57;
+}
+
+.kuiFieldButton:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiFieldButton:focus {
+    outline: none;
+    border-color: #6A6A6A;
+}
+
+.kuiFieldButton span {
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.kuiRemoveMaterial {
+    position: absolute;
+    display: inline-block;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    background-image: url('images/ico_search_cancel_lib.png');
+}
+
+.kuiRemoveMaterial:hover {
+    background-image: url('images/ico_search_cancel_lib_overstate.png');
+}
+
+.kuiFieldCheckbox {
+    position: absolute;
+    color: #FFFFFF;
+    right: 100px;
+    top: -2px;
+    width: 20px;
+    height: 20px;
+    padding: 0px 6px;
+    margin-right: 20px;
+    background-color: #35373D;
+    border-radius: 3px;
+    border: 2px solid #424449;
+}
+
+.kuiFieldCheckbox:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiFieldCheckboxChecked {
+    background-image: url('images/02_properties/ico_blue_checkmark.png');
+}
+
+.kuiFieldMaterial {
+    position: absolute;
+    color: #FFFFFF;
+    right: 27px;
+    top: -11px;
+    width: 48px;
+    height: 38px;
+    padding: 0px 6px;
+    background-color: #4B4D57;
+    background-size: 48px 48px;
+    background-position: center;
+    border-radius: 2px;
+    border: 2px solid #4B4D57;
+    padding-bottom: 5px;
+}
+
+.kuiFieldMaterial:hover {
+    border: 2px solid #2F8BE6;
+}
+
+.kuiFieldMaterial:focus {
+    outline: none;
+}
+
+.kuiFieldMaterialArrow {
+    position: absolute;
+    width: 7px;
+    height: 10px;
+    background-image: url('images/02_properties/ico_material_modifier_arrow.png');
+    display: inline-block;
+    right: 10px;
+    top: 2px;
+}
+
+.kuiFieldMaterialBreak {
+    position: relative;
+    height: 1px;
+    background-color: #36383E;
+    margin: 17px 20px 0px 20px;
+}
+
+.kuiMaterialPreviewThumbnail {
+    position: absolute;
+    color: #FFFFFF;
+    right: 75px;
+    top: -17px;
+    width: 65px;
+    height: 50px;
+    padding: 0px 6px;
+    background-color: #4B4D57;
+    background-size: 65px 65px;
+    background-position: center;
+    border-radius: 3px;
+    border: 3px solid #404247;
+}
+
+.kuiTransformLabelRow {
+    position: absolute;
+    font-family: openSans;
+    font-size: 11px;
+    width: 300px;
+    height: auto;
+    float: right;
+}
+
+.kuiTransformLabelText {
+    position: relative;
+    color: #4A4B51;
+    display: inline-block;
+    padding: 0px 6px;
+    left: 160px;
+    text-align: center;
+    top: -20px;
+}
+
+.kuiTransformFieldLeft,
+.kuiTransformFieldCenter,
+.kuiTransformFieldRight
+{
+    position: absolute;
+    color: #FFFFFF;
+    top: -2px;
+    background-color: #35373D;
+    border: 2px solid #424449;
+    padding: 0px 6px;
+    display: inline-block;
+    text-align: center;
+}
+
+.kuiTransformFieldLeft:hover,
+.kuiTransformFieldCenter:hover,
+.kuiTransformFieldRight:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiTransformFieldLeft:focus,
+.kuiTransformFieldCenter:focus,
+.kuiTransformFieldRight:focus {
+    outline: none;
+}
+
+.kuiTransformFieldLeft {
+    left: 160px;
+    width: 24px;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.kuiTransformFieldCenter {
+    left: 200px;
+    width: 24px;
+    border-radius: 0px;
+}
+
+.kuiTransformFieldRight {
+    left: 240px;
+    width: 24px;
+    border-radius: 0px 3px 3px 0px;
+}
+
+.kuiTransformFieldLock {
+    position: absolute;
+    right: 6px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-image: url('images/02_properties/ico_lock_close.png');
+    cursor: pointer;
+}
+
+.kuiFieldColor {
+    position: absolute;
+    color: #FFFFFF;
+    right: 80px;
+    top: -3px;
+    width: 40px;
+    height: 22px;
+    padding: 0px 6px;
+    margin-right: 20px;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+}
+
+.kuiFieldColor:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiFieldColor:focus {
+    outline: none;
+}
+
+.kuiBackButton {
+    position: absolute;
+    font-family: openSansSemiBold;
+    font-size: 11px;
+    color: #6A6A6A;
+    margin-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}
+
+.kuiBackButton:hover {
+    color: #2F8BE6;
+}
+
+.kuiDescriptionText {
+    font-family: openSansSemiBold;
+    font-size: 12px;
+    color: #93979D;
+    width: 160px;
+    padding-left: 20px;
+}
+
+.kuiCubemapButtonTop,
+.kuiCubemapButtonLeft,
+.kuiCubemapButtonFront,
+.kuiCubemapButtonRight,
+.kuiCubemapButtonBack,
+.kuiCubemapButtonBottom {
+    position: absolute;
+    color: #FFFFFF;
+    width: 63px;
+    height: 63px;
+    padding: 0px 0px 0px 0px;
+    background-color: #4B4D57;
+    border-radius: 0px;
+    border: 2px solid #4B4D57;
+    text-align: center;
+    font-size: 10px;
+    background-size: 63px 63px;
+    background-position: center center;
+}
+
+.kuiCubemapButtonTop:hover,
+.kuiCubemapButtonLeft:hover,
+.kuiCubemapButtonFront:hover,
+.kuiCubemapButtonRight:hover,
+.kuiCubemapButtonBack:hover,
+.kuiCubemapButtonBottom:hover {
+    border-color: #2F8BE6;
+}
+
+.kuiCubemapButtonTop:focus,
+.kuiCubemapButtonLeft:focus,
+.kuiCubemapButtonFront:focus,
+.kuiCubemapButtonRight:focus,
+.kuiCubemapButtonBack:focus,
+.kuiCubemapButtonBottom:focus {
+    outline: none;
+    border-color: #6A6A6A;
+}
+
+.kuiCubemapButtonTop {
+    top: 0px;
+    right: 150px;
+}
+
+.kuiCubemapButtonLeft {
+    top: 65px;
+    right: 215px;
+}
+
+.kuiCubemapButtonFront {
+    top: 65px;
+    right: 150px;
+}
+
+.kuiCubemapButtonRight {
+    top: 65px;
+    right: 85px;
+}
+
+.kuiCubemapButtonBack {
+    top: 65px;
+    right: 20px;
+}
+
+.kuiCubemapButtonBottom {
+    top: 130px;
+    right: 150px;
+}
+
+.kuiIconButton {
+    position: relative;
+    color: #93979D;
+    margin: 0px 0px 0px 20px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.kuiIconButton:hover {
+    color: #FFFFFF;
+}
+
+.kuiIconButton:focus {
+    outline: none;
+}
+
+.kuiIconButtonSelected {
+    color: #2F8BE6;
+}
+
+.kuiIconButtonSelected:hover {
+    color: #2F8BE6;
+}
+
+/*
+
+  KingUI Toolbar Style
+
+*/
+
+.kuiToolbar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.kuiToolbarSegment {
+    position: absolute;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow: visible;
+}
+
+.kuiToolbarItem {
+    font-family: openSans;
+    font-size: 13px;
+    color: #7F899A;
+/*     text-align: center; */
+    top: 50%;
+    margin: 0px 13px;
+/*     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center; */
+}
+
+.kuiToolbarItem:hover {
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.kuiToolbarItemIcon {
+    background: no-repeat center;
+}
+
+.kuiToolbarItemText {
+
+}
+
+.kuiToolbarItemArrow {
+
+}
+
+.kuiToolbarIconBack {
+    border-radius: 3px;
+}
+
+.kuiToolbarIconBack:hover {
+    background-color: #3D4350;
+}
+
+.kuiToolbarSelected {
+    background-color: #222730;
+}
+
+.kuiToolbarSelected:hover {
+    background-color: #222730;
+}
+
+.kuiToolbarBreak {
+    float: left;
+    display: block;
+    width: 50px;
+    height: 100%;
+}
+
+.kuiToolbarLine {
+    background-image: -webkit-linear-gradient(top, #282D36 0%, #282D36 40%, #282D36 60%, #282D36 100%);
+    background-image: -moz-linear-gradient(top, #282D36 0%, #282D36 40%, #282D36 60%, #282D36 100%);
+    background-image: -ms-linear-gradient(top, #282D36 0%, #282D36 40%, #282D36 60%, #282D36 100%);
+    background-image: -o-linear-gradient(top, #282D36 0%, #282D36 40%, #282D36 60%, #282D36 100%);
+    background-image: linear-gradient(top, #282D36 0%, #282D36 40%, #282D36 60%, #282D36 100%);
+    background-size: 2px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.kuiToolbarDropDown {
+    position: relative;
+    background-color: #F5F5F5;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    cursor: default;
+    top: 40px;
+    right: 20px;
+    min-width: auto;
+    display: inline-block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.kuiToolbarDropDown:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 5px 5px;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    top: -5px;
+    left: 30px;
+}
+
+.kuiToolbarDropDownItem {
+    font-family: openSans;
+    color: #4C4D4F;
+    font-size: 12px;
+    padding: 4px 18px;
+    white-space: nowrap;
+    width: calc(100% - 36px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.kuiToolbarDropDownItem:hover {
+    color: #FFFFFF;
+    background-color: #2F8BE6;
+}
+
+.kuiToolbarDropDownItemText {
+
+}
+
+.kuiToolbarDropDownItemInfo {
+    color: #ACADAF;
+    margin-left: 14px;
+}
+
+.kuiToolbarDropDownItemArrow {
+    color: #ACADAF;
+    margin-left: 14px;
+    margin-top: 3px;
+    position: absolute;
+    right: 7px;
+}
+
+.kuiToolbarDropDownBreak {
+    width: 100%;
+    height: 1px;
+    background-image: -webkit-linear-gradient(top, #D6D6D6 0%, #D6D6D6 40%, #D6D6D6 60%, #D6D6D6 100%);
+    background-image: -moz-linear-gradient(top, #D6D6D6 0%, #D6D6D6 40%, #D6D6D6 60%, #D6D6D6 100%);
+    background-image: -ms-linear-gradient(top, #D6D6D6 0%, #D6D6D6 40%, #D6D6D6 60%, #D6D6D6 100%);
+    background-image: -o-linear-gradient(top, #D6D6D6 0%, #D6D6D6 40%, #D6D6D6 60%, #D6D6D6 100%);
+    background-image: linear-gradient(top, #D6D6D6 0%, #D6D6D6 40%, #D6D6D6 60%, #D6D6D6 100%);
+    background-size: 100% 2px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.kuiToolbarDropDownSub {
+    position: absolute;
+    background-color: #F5F5F5;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    cursor: default;
+    min-width: auto;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    right: -20px;
+    top: 0;
+}

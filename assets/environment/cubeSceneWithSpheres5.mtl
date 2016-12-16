@@ -1,0 +1,94 @@
+newmtl Concept07:centerModo_platFormMesh_shaderSG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.04 0.04 0.04
+Ns 256.00
+newmtl Concept07:cross_walkWay_ShaderSG
+illum 4
+Kd 0.38 0.43 0.29
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.04 0.04 0.04
+Ns 256.00
+newmtl Concept07:lambert2SG
+illum 4
+Kd 0.82 0.82 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert3SG
+illum 4
+Kd 0.78 0.48 0.48
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert4SG
+illum 4
+Kd 0.80 0.85 0.94
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert5SG
+illum 4
+Kd 0.07 0.26 0.31
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert6SG
+illum 4
+Kd 0.47 0.21 0.21
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert7SG
+illum 4
+Kd 0.22 0.22 0.22
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert8SG
+illum 4
+Kd 0.53 0.35 0.11
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert9SG
+illum 4
+Kd 0.23 0.24 0.59
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert10SG
+illum 4
+Kd 0.34 0.48 0.49
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:lambert11SG
+illum 4
+Kd 0.80 0.39 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:wall_001_ShaderSG
+illum 4
+Kd 1.00 0.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:wall_002_ShaderSG
+illum 4
+Kd 0.41 0.49 0.14
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Concept07:wall_004_ShaderSG
+illum 4
+Kd 1.00 1.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
