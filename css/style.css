@@ -51,11 +51,11 @@ body {
 
 #middleWrapper {
   position: absolute;
-  bottom:20vh;
+  bottom:22vh;
   width: 400px;
   text-align: left;
   color: white;
-  margin-left: 10vw;
+  margin-left: 5vw;
   font-family: openSansSemiBold;
 }
 
@@ -174,3 +174,22 @@ body {
   font-family: latoBold;
   src: url('css/fonts/lato/Lato-Bold.ttf');
 }*/
+
+
+@media screen and (max-width: 480px) {
+    #middleWrapper h1 {
+       font-size: 2em;
+    }
+
+    #middleWrapper {
+      width:95%;
+    }
+
+    #colorPickerColors {
+      width:95%;
+    }
+
+    #colorPickerText {
+      left:30%;
+    }
+}
