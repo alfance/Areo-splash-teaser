@@ -23,6 +23,7 @@
         <!-- <div id="underline"></div>
         <img id="svgTest" src="css/images/Areo.svg"> -->
         <div id="colorPickWrapper">
+          <p id="colorPickerText">Choose Your Colour</p>
           <div id="colorPickerColors">
             <span id="colorPickerColorsRed"></span>
             <span id="colorPickerColorsYellow"></span>
@@ -30,7 +31,6 @@
             <span id="colorPickerColorsGreen"></span>
             <span id="colorPickerColorsPink"></span>
           </div>
-            <p id="colorPickerText">Choose a Colour</p>
         </div>
       </div>
     </div>
@@ -434,7 +434,7 @@
           secondaryLight.color.set(color).offsetHSL(0.20, 0.20, 0.20);
 
           // $('#middleWrapper').fadeOut(2000);
-          $('#containerBackground').fadeOut(2000, function() {
+          $('#containerBackground').fadeOut(1000, function() {
           $('h1').css('text-shadow','0px 0px 6px #47424E')
             sceneEnabled = true;
             uiEnabled = true;
