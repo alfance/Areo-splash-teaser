@@ -19,7 +19,7 @@
     <div id="container">
       <div id="containerBackground"></div>
       <div id="middleWrapper">
-        <h1>Your Presentations in the VR Metaverse!</h1>
+        <h1>Your VR Presentations in the the Metaverse!</h1>
         <!-- <div id="underline"></div>
         <img id="svgTest" src="css/images/Areo.svg"> -->
         <div id="colorPickWrapper">
@@ -385,7 +385,7 @@
         window.addEventListener('resize', onWindowResize, false);
 
         container.addEventListener('mousemove', onMouseMove, false);
-        container.addEventListener('click', onMouseClick, false);
+        container.addEventListener('click', onMouseClick, true);
 
         window.addEventListener('vrdisplayactivated', function(event) {
 
@@ -435,7 +435,14 @@
 
           // $('#middleWrapper').fadeOut(2000);
           $('#containerBackground').fadeOut(1000, function() {
-          $('h1').css('text-shadow','0px 0px 6px #47424E')
+          $('h1').css({
+            'text-shadow':'0px 0px 16px #47424E',
+            'color':'white'
+          });
+          $('#colorPickerText').css({
+            'text-shadow':'0px 0px 6px #47424E',
+            'color':'white'
+          });
             sceneEnabled = true;
             uiEnabled = true;
 

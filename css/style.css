@@ -38,7 +38,7 @@ body {
 
 #containerBackground {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -54,7 +54,7 @@ body {
   bottom:22vh;
   width: 400px;
   text-align: left;
-  color: white;
+  color: black;
   margin-left: 5vw;
   font-family: openSansSemiBold;
 }
@@ -95,7 +95,7 @@ body {
 
 #colorPickerText {
   top: 0%;
-  color:white;
+  color:black;
   text-align: center;
   left:25%;
   position: absolute;
@@ -180,9 +180,11 @@ body {
     #middleWrapper h1 {
        font-size: 2em;
     }
-
     #middleWrapper {
-      width:95%;
+      max-width: 450px;
+    }
+    #middleWrapper {
+      width:90%;
     }
 
     #colorPickerColors {
