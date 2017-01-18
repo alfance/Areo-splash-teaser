@@ -39,10 +39,10 @@ body {
 #containerBackground {
   position: absolute;
   background: white; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#1E1926 , rgba(255, 255, 255, 0.5)); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#1E1926 , rgba(255, 255, 255, 0.5)); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#1E1926 , rgba(255, 255, 255, 0.5));  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#1E1926 , rgba(255, 255, 255, 0.5));  /* Standard syntax */
+  background: -webkit-linear-gradient(#1E1926 , rgba(255, 255, 255, 0.3)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#1E1926 , rgba(255, 255, 255, 0.3)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#1E1926 , rgba(255, 255, 255, 0.3));  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#1E1926 , rgba(255, 255, 255, 0.3));  /* Standard syntax */
   width: 100%;
   height: 100%;
   pointer-events: none;
