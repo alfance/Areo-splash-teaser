@@ -369,11 +369,11 @@
 
         // lights
 
-        var mainLight = new THREE.PointLight( 0x59876E, 5, 100, 1);
+        var mainLight = new THREE.PointLight( 0xCCCCCC, 5, 100, 1);
         mainLight.position.set(0, 2.9, 0);
         scene.add( mainLight );
 
-        var secondaryLight = new THREE.PointLight(0xC7D6DB, 3, 25, 1);
+        var secondaryLight = new THREE.PointLight(0xD7DADB, 3, 25, 1);
         secondaryLight.position.set(-10.5, 2.9, 0.2);
         scene.add( secondaryLight );
 
@@ -408,7 +408,7 @@
 
         var logo = new KINGUI.ToolbarCustom('logo', function() {
 
-          uiEnabled = uiEnabled;
+          uiEnabled = !uiEnabled;
           //
           // $('#middleWrapper').fadeToggle(2000);
           // $('#containerBackground').fadeToggle(2000, function() {
