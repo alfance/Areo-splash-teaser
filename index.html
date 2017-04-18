@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
 
     <div id="container">
-      <div id="containerBackground"></div>
+      <!-- <div id="containerBackground"></div> -->
       <div id="middleWrapper">
-        <h1>Create. Connect. Present. <br/> In VR.</h1>
+        <img id="middle-logo" src="./assets/new_obj/black-brio.svg" />
+        <h2 id="middleHeaderOne">FIND THE STAR</h2>
         <!-- <div id="underline"></div>
         <img id="svgTest" src="css/images/Areo.svg"> -->
         <div id="colorPickWrapper">
@@ -77,7 +78,7 @@
       var focusedCube = null;
       var focusedCubeOriginalPosition = new THREE.Vector3();
 
-      var sceneEnabled = false, uiEnabled = true;
+      var sceneEnabled = true, uiEnabled = true;
 
       init();
       animate();
@@ -85,8 +86,8 @@
       function init() {
 
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xFFFFFF);
-        scene.fog = new THREE.Fog(0x8E8E8E, 0.5, 60);
+        scene.background = new THREE.Color(0xDDDDDD);
+        scene.fog = new THREE.Fog(0xDDDDDD, 20.5, 130);
 
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setClearColor(scene.fog.color);
@@ -129,7 +130,7 @@
           var objLoader = new THREE.OBJLoader();
           objLoader.setMaterials(loadedMaterials);
 
-          objLoader.load('assets/environment/cubeSceneWithSpheres5.obj', function(object) {
+          objLoader.load('assets/new_obj/externalScene.obj', function(object) {
 
             scene.add(object);
 
@@ -158,14 +159,22 @@
               metalness: 1.0
             });
 
-            objLoader.load('assets/environment/centerPlatform.obj', function(center) {
+            objLoader.load('assets/new_obj/test.obj', function(center) {
 
               center.children[0].material.dispose();
-              center.children[0].material = platformMaterial;
-              object.add(center.children[0]);
+              center.children[0].material = buildingMaterial;
+              scene.add(center);
 
             });
 
+            var stars = objLoader.load('assets/new_obj/star.obj', function(star) {
+              star.position.y = -2.2;
+              star.position.x = -3.8;
+              star.position.z = 9;
+              scene.add(star);
+            });
+
+console.log(stars)
             object.position.y -= 1.8;
             for (var i in object.children) {
 
@@ -177,12 +186,12 @@
 
               } else if (i == 11 || i == 19) {
 
-                object.children[i].visible = false;
+                object.children[i].visible = true;
                 object.children[i].material = platformMaterial;
 
               } else if (i == 10) {
 
-                object.children[i].visible = false;
+                object.children[i].visible = true;
                 object.children[i].material = walkwayMaterial;
 
               } else {
@@ -190,7 +199,7 @@
 //                 meshes.push(object.children[i]);
                 var offset = object.children[i].geometry.center();
                 object.children[i].position.add(offset.negate());
-                object.children[i].visible = false;
+                object.children[i].visible = true;
 
               }
 
@@ -198,7 +207,7 @@
 
             var textureLoader = new THREE.TextureLoader();
 
-            textureLoader.load('assets/environment/pillarMat_basecolor.jpg', function(texture) {
+            textureLoader.load('assets/environment/pillarMat_basecolor1.jpg', function(texture) {
 
               texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
               texture.repeat.x = texture.repeat.y = 16;
@@ -310,7 +319,7 @@
             textureWidth: 1024,
             textureHeight: 1024,
             waterNormals: waterNormals,
-            alpha: 	0.9,
+            alpha: 	0.6,
 //             sunDirection: new THREE.Vector3(-1, 1, -1).normalize(),
             sunColor: 0xffffff,
             waterColor: 0x001e0f,
@@ -318,12 +327,13 @@
           });
 
           var mirrorMesh = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry(4.5, 4.5),
+            new THREE.PlaneBufferGeometry(6.3,8.5),
             water.material
           );
 
           mirrorMesh.add(water);
           mirrorMesh.rotation.x = -Math.PI * 0.5;
+          // water position
           mirrorMesh.position.y = -1.8;
           scene.add(mirrorMesh);
 
@@ -331,14 +341,14 @@
 
         // cubes
 
-        var cubeGeometry = new THREE.BoxBufferGeometry(1, 1, 1);
+        var cubeGeometry = new THREE.SphereBufferGeometry(1, 32, 32);
 //         var cubeMaterial = new THREE.MeshPhysicalMaterial({});
 
-        var radiusMin = 13;
-        var radiusMax = 16;
+        var radiusMin = 7;
+        var radiusMax = 25;
         var scaleMin = 0.5;
-        var scaleMax = 2.0;
-        var population = 25;
+        var scaleMax = 1.6;
+        var population = 45;
 
         scene.add(cubeGroup);
 
@@ -364,17 +374,16 @@
           cubeGroup.add(cube);
 
           meshes.push(cube);
-
         }
 
         // lights
 
-        var mainLight = new THREE.PointLight( 0xCCCCCC, 5, 100, 1);
-        mainLight.position.set(0, 2.9, 0);
+        var mainLight = new THREE.PointLight( 0xCCCCCC, 1, 100, 2);
+        mainLight.position.set(10, 10, 0);
         scene.add( mainLight );
 
-        var secondaryLight = new THREE.PointLight(0xD7DADB, 3, 25, 1);
-        secondaryLight.position.set(-10.5, 2.9, 0.2);
+        var secondaryLight = new THREE.PointLight(0xe7e5d9, 2.5, 60, 2);
+        secondaryLight.position.set(0, 15.9, 15.2);
         scene.add( secondaryLight );
 
         var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.3);
@@ -409,13 +418,12 @@
         var logo = new KINGUI.ToolbarCustom('logo', function() {
 
           uiEnabled = !uiEnabled;
-          //
-          // $('#middleWrapper').fadeToggle(2000);
-          // $('#containerBackground').fadeToggle(2000, function() {
-          //
-          //   sceneEnabled = !sceneEnabled;
-          //
-          // });
+
+          $('#middleWrapper').fadeToggle(1000, function() {
+
+            // sceneEnabled = !sceneEnabled;
+
+          });
 
         });
         toolbar.add(logo);
@@ -433,8 +441,8 @@
           mainLight.color.set(color).addScalar(-0.3);
           secondaryLight.color.set(color).offsetHSL(0.20, 0.20, 0.20);
 
-          // $('#middleWrapper').fadeOut(2000);
-          $('#containerBackground').fadeOut(1000, function() {
+          // $('#containerBackground').fadeOut(1000);
+          $('#middleWrapper').fadeOut(1000, function() {
           $('h1').css({
             'text-shadow':'0px 0px 16px #47424E',
             'color':'white'
@@ -461,6 +469,7 @@
 
       }
 
+// change cube color when mouse hover
       function onMouseMove(event) {
 
         if (!sceneEnabled) return;
@@ -489,13 +498,11 @@
 
           intersected.material.color.copy(baseColor);
           intersected = null;
-
-
-
         }
 
       }
 
+// move cube on mouse click.
       function onMouseClick(event) {
 
         if (!intersected) return;
@@ -580,7 +587,7 @@
         }
 
         cubeGroup.rotation.z += 0.00005;
-        cubeGroup.rotation.x += 0.0001;
+        cubeGroup.rotation.x += 0.0004;
 
         if (focusedCube !== null) {
 
