@@ -25,6 +25,23 @@ body {
   cursor: default;
 }
 
+button {
+  height:40px;
+  min-width: 150px;
+  font-size: 16px;
+  border:none;
+  border-radius: 30px;
+  padding:0 25px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color:#5C41B4;
+  color:white;
+}
+
+button:hover {
+  background-color: #5C41B4;
+  color:white;
+}
 #container {
   background: #11e8bb; /* Old browsers */
     background: -moz-linear-gradient(top,  #11e8bb 0%, #8200c9 100%); /* FF3.6-15 */
@@ -60,26 +77,55 @@ body {
   -o-user-select: none;
 }
 
+/* the message */
 #middleWrapper {
   position: absolute;
-  width: 460px;
-  color: #1E1926;
+  color: white;
   text-shadow: 0px 0px 11px rgba(255, 255, 255, 0.4);
   font-family: openSansSemiBold;
-  top:0px;
+  background-color: rgba(30, 25, 38, 0.6);
+  width: 300px;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+  border-radius: 2px;
+  text-align: center;
 }
 
 #middle-logo {
-  width:43%;
+  width:66%;
   -webkit-filter: drop-shadow( 0px 0px 16px rgba(255, 255, 255, 0.6));
   filter: drop-shadow( 0px 0px 16px rgba(255, 255, 255, 0.6));
 }
 #middleHeaderOne {
   font-size: 2em;
-  margin-top:0px;
+  margin-top:10px;
   text-transform: uppercase;
 }
+.wrapperslogan{
+  margin-bottom: -10px;
+}
 
+.wrapperHR {
+  width: 68%;
+  opacity: 0.4;
+}
+.wrapperHR2{
+  width:68%;
+  border-top: 1px solid #1E1926;
+  opacity: 0.4;
+  margin-left:50%;
+  transform:translateX(-50%);
+}
+.color-purple{
+  color:#5C41B4;
+}
+.finalwrappertext{
+  width:74%;
+  margin-left: 50%;
+transform: translateX(-50%);
+}
 #underline {
   position: relative;
   background-color: #f6c472;
@@ -140,10 +186,50 @@ body {
 }
 
 #colorPickerColors span:hover {
-  border: 5px solid white;
+  border: 2px solid white;
 }
 
+#colorPickerColorsRed {
+  background-color: #AC9DFF;
+}
 
+#colorPickerColorsYellow {
+  background-color: #AC9DFF;
+}
+
+#colorPickerColorsLime {
+  background-color: #64F6F0;
+}
+
+#colorPickerColorsGreen {
+  background-color:#938E9B;
+}
+
+#colorPickerColorsPink {
+  background-color: #F0EFF2;
+
+}
+
+#finalwrapper {
+  position: absolute;
+  color: #1E1926;
+  text-shadow: 0px 0px 18px rgba(255, 255, 255, 0.4);
+  font-family: openSansSemiBold;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 300px;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 30px;
+  border-radius: 2px;
+  text-align: center;
+  display: none;
+}
+
+.finalwrapperh2{
+  font-size:2.2em;
+  margin-bottom: 0px;
+}
 /*@font-face {
   font-family: openSans;
   src: url('css/fonts/open_sans/OpenSans-Regular.ttf');

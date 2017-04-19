@@ -19,11 +19,14 @@
     <div id="container">
       <!-- <div id="containerBackground"></div> -->
       <div id="middleWrapper">
-        <img id="middle-logo" src="./assets/new_obj/black-brio.svg" />
+        <h4 class="wrapperslogan">VR Presentation for Everyone<h4 />
+        <img id="middle-logo" src="./assets/new_obj/white-brio.svg" />
+        <hr class="wrapperHR">
         <h2 id="middleHeaderOne">FIND THE STAR</h2>
+        <p style="margin-top:-15px;">To get Brio professional Free</p>
         <!-- <div id="underline"></div>
         <img id="svgTest" src="css/images/Areo.svg"> -->
-        <div id="colorPickWrapper">
+        <!-- <div id="colorPickWrapper">
           <p id="colorPickerText">Choose Your Colour</p>
           <div id="colorPickerColors">
             <span id="colorPickerColorsRed"></span>
@@ -32,7 +35,15 @@
             <span id="colorPickerColorsGreen"></span>
             <span id="colorPickerColorsPink"></span>
           </div>
-        </div>
+        </div> -->
+      </div>
+      <div id="finalwrapper">
+        <img id="middle-logo" src="./assets/new_obj/black-brio.svg" />
+        <div class="wrapperHR2"></div>
+        <div class="finalwrappertext"><h3>Congraduation on Finding the Star. You now get</h3>
+
+        <div class="color-purple"><h2> A month of Unlimited Plan for <b>FREE</b>!</h2></div></div>
+        <a href ="/signup"><button>Claim</button></a>
       </div>
     </div>
 
@@ -51,7 +62,6 @@
 
     <script src="js/libs/three.js/Mirror.js"></script>
     <script src="js/libs/three.js/WaterShader.js"></script>
-
     <script>
 
       var camera, controls, effect, scene, renderer;
@@ -72,6 +82,10 @@
 
       var water, waterNormals;
 
+      var stars = new THREE.OBJLoader()
+
+      var backgrounds = new THREE.OBJLoader()
+
       var cubeGroup = new THREE.Group();
       var landingPoint = new THREE.Vector3(0, 0, 0);
       var tweenPlaying = false;
@@ -79,6 +93,11 @@
       var focusedCubeOriginalPosition = new THREE.Vector3();
 
       var sceneEnabled = true, uiEnabled = true;
+
+      // light setting
+      var mainLight = new THREE.PointLight( 0xCCCCCC, 1, 100, 2);
+      var secondaryLight = new THREE.PointLight(0xe7e5d9, 1.0, 60, 2);
+      var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.1);
 
       init();
       animate();
@@ -159,7 +178,8 @@
               metalness: 1.0
             });
 
-            objLoader.load('assets/new_obj/test.obj', function(center) {
+            // the center platform
+            objLoader.load('assets/new_obj/flow_Platform_UV.obj', function(center) {
 
               center.children[0].material.dispose();
               center.children[0].material = buildingMaterial;
@@ -167,14 +187,11 @@
 
             });
 
-            var stars = objLoader.load('assets/new_obj/star.obj', function(star) {
-              star.position.y = -2.2;
-              star.position.x = -3.8;
-              star.position.z = 9;
-              scene.add(star);
-            });
+            // one of the background stripe
+            backgrounds.load('assets/new_obj/externalScene1.obj', function(background) {
+             scene.add(background);
+             });
 
-console.log(stars)
             object.position.y -= 1.8;
             for (var i in object.children) {
 
@@ -207,7 +224,7 @@ console.log(stars)
 
             var textureLoader = new THREE.TextureLoader();
 
-            textureLoader.load('assets/environment/pillarMat_basecolor1.jpg', function(texture) {
+            textureLoader.load('assets/environment/pillarMat_basecolor2.jpg', function(texture) {
 
               texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
               texture.repeat.x = texture.repeat.y = 16;
@@ -257,7 +274,7 @@ console.log(stars)
 
             });
 
-            textureLoader.load('assets/environment/pillarMatBrick_basecolor.jpg', function(texture) {
+            textureLoader.load('assets/new_obj/pillarMatBrick_basecolor2.jpg', function(texture) {
 
               texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
               texture.repeat.x = texture.repeat.y = 3;
@@ -298,7 +315,7 @@ console.log(stars)
 
             });
 
-            textureLoader.load('assets/environment/pillarMat_basecolor.jpg', function(texture) {
+            textureLoader.load('assets/environment/pillarMat_basecolor2.jpg', function(texture) {
 
               walkwayMaterial.map = texture;
               walkwayMaterial.needsUpdate = true;
@@ -308,6 +325,9 @@ console.log(stars)
           });
 
         });
+
+        // particles
+        
 
         // water
 
@@ -319,25 +339,45 @@ console.log(stars)
             textureWidth: 1024,
             textureHeight: 1024,
             waterNormals: waterNormals,
-            alpha: 	0.6,
+            alpha: 	0.7,
 //             sunDirection: new THREE.Vector3(-1, 1, -1).normalize(),
             sunColor: 0xffffff,
-            waterColor: 0x001e0f,
+            waterColor: 0x91f8e7,
             distortionScale: 1,
           });
 
           var mirrorMesh = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry(6.3,8.5),
+            new THREE.BoxGeometry(1,3,3),
             water.material
           );
+          console.log(mirrorMesh);
 
-          mirrorMesh.add(water);
-          mirrorMesh.rotation.x = -Math.PI * 0.5;
-          // water position
-          mirrorMesh.position.y = -1.8;
-          scene.add(mirrorMesh);
+          var meshobj;
+          var watermesh = new THREE.OBJLoader()
+          watermesh.load('assets/new_obj/waterMesh.obj', function(mesh) {
+           meshobj = mesh.children[0];
+            water.material;
+           });
+           console.log("water map", meshobj);
+
+           mirrorMesh.add(water);
+           mirrorMesh.rotation.x = -Math.PI * 0.5;
+           // // water position
+           // watermesh.position.y = -1.8;
+           scene.add(mirrorMesh);
 
         });
+
+        // stars
+         stars.load('assets/new_obj/star.obj', function(star) {
+          star.children[0].position.y = -4.2;
+          star.children[0].position.x = -3.8;
+          star.children[0].position.z = 6;
+
+          scene.add(star);
+          meshes.push(star.children[0]);
+          });
+
 
         // cubes
 
@@ -378,15 +418,12 @@ console.log(stars)
 
         // lights
 
-        var mainLight = new THREE.PointLight( 0xCCCCCC, 1, 100, 2);
         mainLight.position.set(10, 10, 0);
         scene.add( mainLight );
 
-        var secondaryLight = new THREE.PointLight(0xe7e5d9, 2.5, 60, 2);
         secondaryLight.position.set(0, 15.9, 15.2);
         scene.add( secondaryLight );
 
-        var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.3);
         scene.add( ambientLight );
 
         // events
@@ -460,6 +497,35 @@ console.log(stars)
 
       }
 
+      function starClicked(){
+
+        var color = $(event.target).css('background-color');
+
+        scene.background.set(0xb0d6d0);
+        scene.fog.color.set(0x9ec3bd);
+        mainLight.color.set(0x91f8e7)
+        secondaryLight.color.set(0xfef678, 1.0, 3);
+        secondaryLight.position.set(0, 3, 1);
+        ambientLight.color.set(0xc8951a);
+
+        // mainLight.color.set(color).addScalar(-0.3);
+        // secondaryLight.color.set(color).offsetHSL(0.20, 0.20, 0.20);
+
+        // $('#containerBackground').fadeOut(1000);
+        $('#middleWrapper').fadeOut(1000, function() {
+        $('h1').css({
+          'text-shadow':'0px 0px 16px #47424E',
+          'color':'white'
+        });
+        $('#colorPickerText').css({
+          'text-shadow':'0px 0px 6px #47424E',
+          'color':'white'
+        });
+      });
+
+      $('#finalwrapper').fadeIn(1500);
+      }
+
       function onWindowResize() {
 
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -490,7 +556,7 @@ console.log(stars)
             intersected = intersects[0].object;
             baseColor.copy(intersected.material.color);
 
-            intersected.material.color.setHex(0xff0000);
+            intersected.material.color.setHex(0x5C41B4);
 
           }
 
@@ -514,9 +580,14 @@ console.log(stars)
 //         sound.play();
 
         TWEEN.removeAll();
+        // console.log("focus cube is", focusedCube);
+        // console.log("landing position", landingPoint.x);
+        // console.log("focusedCubeOriginalPosition.x,", focusedCubeOriginalPosition.x);
+
+        // if the star is selected
 
         if (focusedCube === intersected) {
-
+console.log(1)
           var tween = new TWEEN.Tween(intersected.position);
           tween.to({
             x: focusedCubeOriginalPosition.x,
@@ -532,7 +603,7 @@ console.log(stars)
           tween.start();
 
         } else if (focusedCube !== null) {
-
+console.log(2)
           var tween = new TWEEN.Tween(focusedCube.position);
           tween.to({
             x: focusedCubeOriginalPosition.x,
@@ -554,7 +625,13 @@ console.log(stars)
           tween.easing(TWEEN.Easing.Cubic.Out);
           tween.start();
 
+          if (intersected.uuid === meshes[45].uuid){
+            starClicked();
+            console.log("got the star at 2");
+          }
+
         } else {
+          console.log(3)
 
           focusedCube = intersected;
           focusedCubeOriginalPosition = intersected.position.clone();
@@ -568,6 +645,11 @@ console.log(stars)
           tween.easing(TWEEN.Easing.Cubic.Out);
           tween.start();
 
+          if (intersected.uuid === meshes[45].uuid){
+            starClicked();
+            console.log("got the star at 3");
+            meshes[45].material.color.setHex(0xffc445);
+          }
         }
 
       }
@@ -591,7 +673,7 @@ console.log(stars)
 
         if (focusedCube !== null) {
 
-          focusedCube.rotation.y += 0.005;
+          focusedCube.rotation.y += 0.009;
 
         }
 
