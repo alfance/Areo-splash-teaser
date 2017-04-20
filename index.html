@@ -315,7 +315,7 @@
 
             });
 
-            textureLoader.load('assets/environment/pillarMat_basecolor2.jpg', function(texture) {
+            textureLoader.load('assets/environment/pillarMat_basecolor.jpg', function(texture) {
 
               walkwayMaterial.map = texture;
               walkwayMaterial.needsUpdate = true;
@@ -350,7 +350,9 @@
             new THREE.BoxGeometry(3,3,0.4),
             water.material
           );
-          console.log(mirrorMesh);
+
+          console.log("water cube is", mirrorMesh);
+
 
           var meshobj;
           var watermesh = new THREE.OBJLoader()
