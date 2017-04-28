@@ -339,31 +339,35 @@
             textureWidth: 1024,
             textureHeight: 1024,
             waterNormals: waterNormals,
-            alpha: 	0.7,
+            alpha: 	0.9,
 //             sunDirection: new THREE.Vector3(-1, 1, -1).normalize(),
             sunColor: 0xffffff,
-            waterColor: 0x91f8e7,
+            waterColor: 0x408698,
             distortionScale: 1,
           });
 
           var mirrorMesh = new THREE.Mesh(
-            new THREE.BoxGeometry(3,3,0.4),
+            new THREE.CylinderGeometry(3,1,2, 32),
+            // adding the material
             water.material
           );
 
-          console.log("water cube is", mirrorMesh);
+          // var loader = new THREE.BufferGeometryLoader();
+          //
+          // var meshobj;
+          // var watermesh = new THREE.OBJLoader()
+          // watermesh.load('assets/new_obj/water_new.obj', function(mesh) {
+          //   // mesh.material.color.setHex(0x5C41B4);
+          //   scene.add(mesh);
+          //  });
+          //  console.log("water map", watermesh);
 
-
-          var meshobj;
-          var watermesh = new THREE.OBJLoader()
-          watermesh.load('assets/new_obj/water_new.obj', function(mesh) {
-            // mesh.material.color.setHex(0x5C41B4);
-           scene.add(mesh);
-           });
-           console.log("water map", meshobj);
-
+          //animation of the water
            mirrorMesh.add(water);
-           mirrorMesh.rotation.x = -Math.PI * 0.5;
+           mirrorMesh.rotation.x = Math.PI * 0.05;
+           mirrorMesh.position.y = -3.3;
+           mirrorMesh.position.x = 0.3;
+           mirrorMesh.position.z = 1;
            // // water position
           //  watermesh.position.set(1, 1, 1);
            scene.add(mirrorMesh);
@@ -378,6 +382,7 @@
 
           scene.add(star);
           meshes.push(star.children[0]);
+
           });
 
 
@@ -500,13 +505,12 @@
       }
 
       function starClicked(){
-
         var color = $(event.target).css('background-color');
 
         scene.background.set(0xb0d6d0);
         scene.fog.color.set(0x9ec3bd);
         mainLight.color.set(0x91f8e7)
-        secondaryLight.color.set(0xfef678, 1.0, 3);
+        secondaryLight.color.set(0xe9e9e9, 1.0, 3);
         secondaryLight.position.set(0, 3, 1);
         ambientLight.color.set(0xc8951a);
 
@@ -629,7 +633,9 @@ console.log(2)
 
           if (intersected.uuid === meshes[45].uuid){
             starClicked();
+            meshes[45].scale.set(2,2,2);
             console.log("got the star at 2");
+            meshes[45].material.color.setHex(0xffc445);
           }
 
         } else {
@@ -649,6 +655,7 @@ console.log(2)
 
           if (intersected.uuid === meshes[45].uuid){
             starClicked();
+            meshes[45].scale.set(2,2,2);
             console.log("got the star at 3");
             meshes[45].material.color.setHex(0xffc445);
           }
